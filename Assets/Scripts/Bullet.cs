@@ -45,9 +45,9 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject != properties.owner)
         {
-            if (other.TryGetComponent(out Health health))
+            if (other.transform.root.TryGetComponent(out IDamageable _damageable))
             {
-                health.TakeDamage(properties.damage);
+                _damageable.TakeDamage(properties.damage);
             }
 
             Destroy(gameObject);

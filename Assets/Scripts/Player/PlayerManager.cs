@@ -2,26 +2,29 @@ using UniRx;
 using UnityEngine;
 using System.Collections.Generic;
 
-public class PlayerManager : MonoBehaviour
+namespace Players
 {
-    public IReactiveCollection<GameObject> Players => _players;
-
-    private ReactiveCollection<GameObject> _players = new ReactiveCollection<GameObject>();
-
-    [SerializeField] private List<GameObject> _defaultPlayers = new List<GameObject>();
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class PlayerManager : MonoBehaviour
     {
-        foreach (var p in _defaultPlayers)
+        public IReactiveCollection<GameObject> Players => _players;
+
+        private ReactiveCollection<GameObject> _players = new ReactiveCollection<GameObject>();
+
+        [SerializeField] private List<GameObject> _defaultPlayers = new List<GameObject>();
+
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        void Start()
         {
-            _players.Add(p);
+            foreach (var p in _defaultPlayers)
+            {
+                _players.Add(p);
+            }
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 }

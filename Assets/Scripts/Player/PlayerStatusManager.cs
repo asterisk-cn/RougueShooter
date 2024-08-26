@@ -1,29 +1,19 @@
 using UnityEngine;
 
-public class PlayerStatusManager : MonoBehaviour
+namespace Players
 {
-    private float maxHealth;
-    private float speed;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class PlayerStatusManager : MonoBehaviour
     {
-        ReadPlayerPropertyDataAsset();
-        GetComponent<Health>().Initialize(maxHealth);
-        GetComponent<PlayerController>().Initialize(speed);
-    }
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        void Start()
+        {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        }
 
-    void ReadPlayerPropertyDataAsset()
-    {
-        var path = "Data/PlayerPropertyData";
-        var playerParameter = Resources.Load<PlayerPropertyAsset>(path);
+        // Update is called once per frame
+        void Update()
+        {
 
-        this.speed = playerParameter.speed;
-        this.maxHealth = playerParameter.maxHealth;
+        }
     }
 }
