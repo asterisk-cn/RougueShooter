@@ -32,9 +32,10 @@ public class Health : MonoBehaviour
             .AddTo(this);
     }
 
-    public void Die()
+    void Die()
     {
-        Debug.Log("Die");
+        _damageable.OnDead();
+        Debug.Log("Player is dead.");
     }
 
     void TakeDamage(float damage)

@@ -1830,8 +1830,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _defaultPlayers:
-  - {fileID: 1409146484}
-  - {fileID: 1876795297}
+  - {fileID: 8256141371415999646}
+  - {fileID: 1876795302}
 --- !u!1 &1148040735
 GameObject:
   m_ObjectHideFlags: 0
@@ -8063,11 +8063,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1409146484 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2431059746684134631, guid: 8c3dcb0e0ae0b45bcbbbfb78a7ec72cf, type: 3}
-  m_PrefabInstance: {fileID: 8256141371415999644}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1744105610
 GameObject:
   m_ObjectHideFlags: 0
@@ -8239,11 +8234,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c3dcb0e0ae0b45bcbbbfb78a7ec72cf, type: 3}
---- !u!1 &1876795297 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2431059746684134631, guid: 8c3dcb0e0ae0b45bcbbbfb78a7ec72cf, type: 3}
+--- !u!114 &1876795302 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1170764056280688591, guid: 8c3dcb0e0ae0b45bcbbbfb78a7ec72cf, type: 3}
   m_PrefabInstance: {fileID: 1854104407}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a9fa1e9a4174dc5a7163cf5dd7b745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2135737016
 GameObject:
   m_ObjectHideFlags: 0
@@ -8378,6 +8379,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c3dcb0e0ae0b45bcbbbfb78a7ec72cf, type: 3}
+--- !u!114 &8256141371415999646 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1170764056280688591, guid: 8c3dcb0e0ae0b45bcbbbfb78a7ec72cf, type: 3}
+  m_PrefabInstance: {fileID: 8256141371415999644}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a9fa1e9a4174dc5a7163cf5dd7b745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

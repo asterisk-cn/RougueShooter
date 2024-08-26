@@ -1,9 +1,10 @@
 using UnityEngine;
 using UniRx;
+using Players;
 
 public class PlayerPresenter : MonoBehaviour
 {
-    public void OnCreatePlayer(GameObject player, HealthView view)
+    public void OnCreatePlayer(PlayerCore player, HealthView view)
     {
         var health = player.GetComponentInChildren<Health>();
 

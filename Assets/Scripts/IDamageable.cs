@@ -7,4 +7,5 @@ public interface IDamageable
     public IObservable<float> OnDamagedAsObservable { get; }
 
     public void TakeDamage(float damage);
+    public void OnDead();
 }
