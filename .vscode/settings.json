@@ -57,5 +57,5 @@
         "Temp/": true
     },
     "dotnet.defaultSolution": "Rogue Shooter.sln",
-    "cSpell.words": ["Cysharp", "Lerp", "Mathf", "Rigidbody"]
+    "cSpell.words": ["Cysharp", "Lerp", "Mathf", "Reorderable", "Rigidbody", "Scriptable"]
 }

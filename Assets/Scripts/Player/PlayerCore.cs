@@ -52,11 +52,11 @@ namespace Players
 
         void ReadPlayerPropertyDataAsset()
         {
-            var path = "Data/PlayerPropertyData";
-            var playerParameter = Resources.Load<PlayerPropertyAsset>(path);
+            var path = "Data/PlayerSetting";
+            var playerParams = Resources.Load<PlayerSetting>(path);
 
-            this.speed = playerParameter.speed;
-            this.maxHealth = playerParameter.maxHealth;
+            this.speed = playerParams.speed;
+            this.maxHealth = playerParams.maxHealth;
         }
     }
 }

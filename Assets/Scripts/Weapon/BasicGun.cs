@@ -2,8 +2,9 @@ using System;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System.Threading;
+using Players;
 
-namespace Players.Guns
+namespace Weapons
 {
     public class BasicGun : MonoBehaviour
     {
@@ -11,7 +12,7 @@ namespace Players.Guns
 
         private bool _isShooting = false;
 
-        [SerializeField] private Bullet _bulletPrefab;
+        [SerializeField] private Bullets.BasicBullet _bulletPrefab;
         [SerializeField] private Transform _firePoint;
         private float _fireRate = 0.5f;
 
