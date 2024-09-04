@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace Upgrade
+namespace Upgrades
 {
     [CustomPropertyDrawer(typeof(UpgradeData))]
     public class UpgradeDataDrawer : PropertyDrawer
@@ -14,10 +14,13 @@ namespace Upgrade
             position.height = singleLineHeight;
 
             // 各プロパティの取得
+            SerializedProperty idProp = property.FindPropertyRelative("id");
             SerializedProperty upgradeNameProp = property.FindPropertyRelative("upgradeName");
             SerializedProperty upgradeTypeProp = property.FindPropertyRelative("upgradeType");
 
             // 各フィールドの表示
+            EditorGUI.PropertyField(position, idProp, new GUIContent("ID"));
+            position.y += singleLineHeight + 2;
             EditorGUI.PropertyField(position, upgradeNameProp, new GUIContent("Upgrade Name"));
             position.y += singleLineHeight + 2;
             EditorGUI.PropertyField(position, upgradeTypeProp, new GUIContent("Upgrade Type"));
@@ -27,8 +30,8 @@ namespace Upgrade
 
             if (upgradeType == UpgradeType.Player)
             {
-                SerializedProperty extPlayerParamsProp = property.FindPropertyRelative("extPlayerParams");
-                EditorGUI.PropertyField(position, extPlayerParamsProp, true);
+                SerializedProperty playerParamsVariationProp = property.FindPropertyRelative("playerParamsVariation");
+                EditorGUI.PropertyField(position, playerParamsVariationProp, true);
             }
             else if (upgradeType == UpgradeType.AddWeapon)
             {
@@ -37,8 +40,8 @@ namespace Upgrade
             }
             else if (upgradeType == UpgradeType.Weapon)
             {
-                SerializedProperty extWeaponParamsProp = property.FindPropertyRelative("extWeaponParams");
-                EditorGUI.PropertyField(position, extWeaponParamsProp, true);
+                SerializedProperty weaponParamsVariationProp = property.FindPropertyRelative("weaponParamsVariation");
+                EditorGUI.PropertyField(position, weaponParamsVariationProp, true);
             }
 
             EditorGUI.EndProperty();
@@ -46,13 +49,13 @@ namespace Upgrade
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            float height = EditorGUIUtility.singleLineHeight * 2 + 4; // 基本の高さ
+            float height = EditorGUIUtility.singleLineHeight * 3 + 4; // 基本の高さ
 
             var upgradeType = (UpgradeType)property.FindPropertyRelative("upgradeType").enumValueIndex;
 
             if (upgradeType == UpgradeType.Player)
             {
-                height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("extPlayerParams"), true) + 2;
+                height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("playerParamsVariation"), true) + 2;
             }
             else if (upgradeType == UpgradeType.AddWeapon)
             {
@@ -60,7 +63,7 @@ namespace Upgrade
             }
             else if (upgradeType == UpgradeType.Weapon)
             {
-                height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("extWeaponParams"), true) + 2;
+                height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("weaponParamsVariation"), true) + 2;
             }
 
             return height;

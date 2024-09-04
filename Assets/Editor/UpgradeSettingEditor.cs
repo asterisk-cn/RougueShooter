@@ -1,10 +1,8 @@
 using UnityEngine;
-using System;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEditorInternal;
 
-namespace Upgrade
+namespace Upgrades
 {
     [CustomEditor(typeof(UpgradeSetting))]
     public class UpgradeSettingEditor : Editor
@@ -40,6 +38,13 @@ namespace Upgrade
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
+
+            UpgradeSetting upgradeSetting = target as UpgradeSetting;
+
+            if (GUILayout.Button("Create Enum File"))
+            {
+                upgradeSetting.CreateEnumFile();
+            }
 
             reorderableList.DoLayoutList();
 

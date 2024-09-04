@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Upgrade
+namespace Upgrades
 {
     public class Upgrade : MonoBehaviour
     {

@@ -19,7 +19,7 @@ namespace Players
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            ReadPlayerPropertyDataAsset();
+            LoadPlayerSetting();
 
             // TODO: 依存整理？
             GetComponentInChildren<Health>().Initialize(maxHealth);
@@ -50,7 +50,7 @@ namespace Players
             // _playerDeadSubject.Dispose();
         }
 
-        void ReadPlayerPropertyDataAsset()
+        void LoadPlayerSetting()
         {
             var path = "Data/PlayerSetting";
             var playerParams = Resources.Load<PlayerSetting>(path);
