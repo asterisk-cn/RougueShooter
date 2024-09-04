@@ -13,17 +13,14 @@ namespace Players
         private readonly AsyncSubject<Unit> _playerDeadSubject = new AsyncSubject<Unit>();
 
         public int PlayerId { get; private set; }
-        private float maxHealth;
-        private float speed;
+        private PlayerParams _playerParams = new PlayerParams();
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            LoadPlayerSetting();
-
-            // TODO: 依存整理？
-            GetComponentInChildren<Health>().Initialize(maxHealth);
-            GetComponentInChildren<PlayerMove>().Initialize(speed);
+            // TODO: 依存逆にする
+            GetComponentInChildren<Health>().Initialize(_playerParams.maxHealth);
+            GetComponentInChildren<PlayerMove>().Initialize(_playerParams.speed);
         }
 
         // Update is called once per frame
@@ -37,6 +34,12 @@ namespace Players
             this.PlayerId = playerId;
         }
 
+        // TODO: PlayerStatusManagerを挟む
+        public void SetPlayerParams(PlayerParams playerParams)
+        {
+            this._playerParams = playerParams;
+        }
+
         public void TakeDamage(float damage)
         {
             _onDamaged.OnNext(damage);
@@ -48,15 +51,6 @@ namespace Players
             _playerDeadSubject.OnCompleted();
 
             // _playerDeadSubject.Dispose();
-        }
-
-        void LoadPlayerSetting()
-        {
-            var path = "Data/PlayerSetting";
-            var playerParams = Resources.Load<PlayerSetting>(path);
-
-            this.speed = playerParams.speed;
-            this.maxHealth = playerParams.maxHealth;
         }
     }
 }

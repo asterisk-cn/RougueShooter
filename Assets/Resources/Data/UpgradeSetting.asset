@@ -16,32 +16,30 @@ MonoBehaviour:
   - id: Health01
     upgradeName: Health
     upgradeType: 0
-    extPlayerParams:
+    playerParamsVariation:
       maxHealth: 50
       speed: 0
-    extWeaponParams:
+    weaponParamsVariation:
       fireRate: 0
       damage: 0
     weaponPrefab: {fileID: 0}
   - id: Health02
     upgradeName: Health+
     upgradeType: 0
-    extPlayerParams:
+    playerParamsVariation:
       maxHealth: 50
       speed: 0
-    extWeaponParams:
+    weaponParamsVariation:
       fireRate: 0
       damage: 0
     weaponPrefab: {fileID: 0}
   - id: Homing
     upgradeName: Homing
     upgradeType: 1
-    extPlayerParams:
-      maxHealth: 50
+    playerParamsVariation:
+      maxHealth: 0
       speed: 0
-    extWeaponParams:
+    weaponParamsVariation:
       fireRate: 0
       damage: 0
     weaponPrefab: {fileID: 0}
-  enumName: UpgradeId
-  enumFilePath: Assets/Scripts/Upgrade/UpgradeId.cs

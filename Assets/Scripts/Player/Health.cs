@@ -1,15 +1,18 @@
 using UnityEngine;
 using UniRx;
+using Cysharp.Threading.Tasks;
+using System.Threading;
 
 public class Health : MonoBehaviour
 {
     private IDamageable _damageable;
 
     public IReadOnlyReactiveProperty<float> CurrentHealth => _currentHealth;
-
+    public UniTask InitializedAsync => _initializationCompletionSource.Task;
     public float MaxHealth { get; private set; }
 
     private ReactiveProperty<float> _currentHealth = new ReactiveProperty<float>();
+    private readonly UniTaskCompletionSource _initializationCompletionSource = new UniTaskCompletionSource();
 
     void Awake()
     {
@@ -30,12 +33,13 @@ public class Health : MonoBehaviour
             .Where(x => x > 0)
             .Subscribe(x => TakeDamage(x))
             .AddTo(this);
+
+        _initializationCompletionSource.TrySetResult();
     }
 
     void Die()
     {
         _damageable.OnDead();
-        Debug.Log("Player is dead.");
     }
 
     void TakeDamage(float damage)

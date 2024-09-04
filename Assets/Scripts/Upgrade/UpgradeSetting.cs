@@ -14,7 +14,7 @@ namespace Upgrades
     }
 
     [Serializable]
-    public struct UpgradeData
+    public class UpgradeData
     {
         public string id;
         public string upgradeName;
@@ -65,15 +65,7 @@ namespace Upgrades
 
             List<string> upgradeIdList;
 
-            try
-            {
-                upgradeIdList = CreateUpgradeIdList();
-            }
-            catch (Exception e)
-            {
-                Debug.LogError(e.Message);
-                return;
-            }
+            upgradeIdList = CreateUpgradeIdList();
 
             if (upgradeIdList == null || upgradeIdList.Count == 0)
             {

@@ -4,7 +4,7 @@ using System;
 namespace Weapon.Bullets
 {
     [Serializable]
-    public struct BulletParams
+    public class BulletParams
     {
         public GameObject owner;
         public float speed;

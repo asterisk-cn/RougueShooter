@@ -29,6 +29,7 @@ namespace Weapons.Bullets
 
         public void Initialize(GameObject owner)
         {
+            bulletParams = new BulletParams();
             bulletParams.owner = owner;
 
             bulletParams.speed = speed;

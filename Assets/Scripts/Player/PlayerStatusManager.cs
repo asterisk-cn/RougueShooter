@@ -5,15 +5,22 @@ namespace Players
 {
     public class PlayerStatusManager : MonoBehaviour
     {
+        [SerializeField] PlayerCore _player;
+
         PlayerParams _defaultPlayerParams;
         PlayerParams _currentPlayerParams;
 
         [SerializeField] Upgrades.UpgradeManager _upgradeManager;
 
+        void Awake()
+        {
+            LoadPlayerSetting();
+        }
+
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-
+            _player.SetPlayerParams(_currentPlayerParams);
         }
 
         // Update is called once per frame
@@ -22,12 +29,21 @@ namespace Players
 
         }
 
-        void CalculatePlayerParams()
+        public void ApplyPlayerParamsVariation(PlayerParams playerParamsVariation)
         {
-            var variation = _upgradeManager.playerParamsVariation;
+            _currentPlayerParams = new PlayerParams();
+            _currentPlayerParams = _defaultPlayerParams + playerParamsVariation;
 
-            _currentPlayerParams.maxHealth = _defaultPlayerParams.maxHealth + variation.maxHealth;
-            _currentPlayerParams.speed = _defaultPlayerParams.speed + variation.speed;
+            _player.SetPlayerParams(_currentPlayerParams);
+        }
+
+        void LoadPlayerSetting()
+        {
+            var path = "Data/PlayerSetting";
+            var playerParams = Resources.Load<PlayerSetting>(path);
+
+            this._defaultPlayerParams = playerParams.playerParams;
+            this._currentPlayerParams = _defaultPlayerParams;
         }
     }
 }
