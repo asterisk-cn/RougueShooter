@@ -4,6 +4,8 @@ namespace Upgrades
     {
         Health01,
         Health02,
-        Homing,
+        Basic,
+        Triple,
+        Triple01,
     }
 }

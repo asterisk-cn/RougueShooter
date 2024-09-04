@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Players;
+using Weapons;
 
 namespace Upgrades
 {
@@ -19,9 +21,9 @@ namespace Upgrades
         public string id;
         public string upgradeName;
         public UpgradeType upgradeType;
-        public Players.PlayerParams playerParamsVariation;
-        public Weapons.WeaponParams weaponParamsVariation;
-        public GameObject weaponPrefab;
+        public PlayerParams playerParamsVariation;
+        public WeaponParams weaponParamsVariation;
+        public WeaponId weaponId;
     }
 
     [CreateAssetMenu(fileName = "UpgradeSetting", menuName = "Scriptable Objects/UpgradeSetting")]

@@ -1,16 +1,21 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UniRx;
+using Shapes2D;
 
 namespace Upgrades
 {
     public class UpgradeManager : MonoBehaviour
     {
         [SerializeField] Players.PlayerStatusManager _playerStatusManager;
+        [SerializeField] Weapons.WeaponManager _weaponManager;
         [SerializeField] List<UpgradeId> _upgradeIdList;
 
         List<IUpgrade> _upgradeList;
         Players.PlayerParams _playerParamsVariation;
+        List<GameObject> _weaponList;
+
+        [SerializeField] List<GameObject> _weaponPrefabs;
 
         public Players.PlayerParams playerParamsVariation
         {
@@ -37,39 +42,38 @@ namespace Upgrades
 
         public void ApplyAllUpgrades()
         {
+            ApplyPlayerUpgrades();
+            ApplyWeaponUpgrades();
+        }
+
+        void ApplyPlayerUpgrades()
+        {
             _playerParamsVariation = new Players.PlayerParams();
-
-            // TODO: タイプごとに分ける
-            foreach (var upgradeId in _upgradeIdList)
+            var playerUpgrades = _upgradeIdList.FindAll(upgradeId => _upgradeList[(int)upgradeId] is PlayerUpgrade).ConvertAll(upgradeId => _upgradeList[(int)upgradeId] as PlayerUpgrade);
+            foreach (var playerUpgrade in playerUpgrades)
             {
-                ApplyUpgrade(upgradeId);
+                _playerParamsVariation += playerParamsVariation;
             }
-
             _playerStatusManager.ApplyPlayerParamsVariation(_playerParamsVariation);
         }
 
-        void ApplyUpgrade(UpgradeId upgradeId)
+        void ApplyWeaponUpgrades()
         {
-            IUpgrade upgrade = _upgradeList[(int)upgradeId];
-            if (upgrade == null)
+            _weaponList = new List<GameObject>();
+            var addWeaponUpgrades = _upgradeIdList.FindAll(upgradeId => _upgradeList[(int)upgradeId] is AddWeaponUpgrade).ConvertAll(upgradeId => _upgradeList[(int)upgradeId] as AddWeaponUpgrade);
+            foreach (var addWeaponUpgrade in addWeaponUpgrades)
             {
-                Debug.LogError("Upgrade not found: " + upgradeId);
-                return;
+                var _weaponParamsVariation = new Weapons.WeaponParams();
+                var weaponUpgrades = _upgradeList.FindAll(upgrade => upgrade is WeaponUpgrade && (upgrade as WeaponUpgrade).weaponId == addWeaponUpgrade.weaponId);
+                foreach (var weaponUpgrade in weaponUpgrades)
+                {
+                    _weaponParamsVariation += (weaponUpgrade as WeaponUpgrade).weaponParamsVariation;
+                }
+                var weapon = _weaponPrefabs[(int)addWeaponUpgrade.weaponId].GetComponent<Weapons.BasicGun>();
+                weapon.ApplyWeaponParamsVariation(_weaponParamsVariation);
+                _weaponList.Add(_weaponPrefabs[(int)addWeaponUpgrade.weaponId]);
             }
-
-            if (upgrade is PlayerUpgrade)
-            {
-                _playerParamsVariation += (upgrade as PlayerUpgrade).playerParamsVariation;
-            }
-            else if (upgrade is AddWeaponUpgrade)
-            {
-                // Add weapon to player
-            }
-            else if (upgrade is WeaponUpgrade)
-            {
-                // Upgrade weapon
-            }
-
+            _weaponManager.CreateWeapons(_weaponList);
         }
 
         IUpgrade CreateUpgrade(UpgradeData upgradeData)
@@ -80,8 +84,8 @@ namespace Upgrades
                     return new PlayerUpgrade();
                 case UpgradeType.AddWeapon:
                     return new AddWeaponUpgrade();
-                // case UpgradeType.Weapon:
-                //     return new WeaponUpgrade();
+                case UpgradeType.Weapon:
+                    return new WeaponUpgrade();
                 default:
                     throw new System.Exception("Invalid upgrade type: " + upgradeData.upgradeType);
             }

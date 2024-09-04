@@ -11,7 +11,6 @@ public class PlayerPresenter : MonoBehaviour
 
         await health.InitializedAsync;
 
-        Debug.Log("health: " + health.MaxHealth);
         view.Initialize((float)health.CurrentHealth.Value / health.MaxHealth);
 
         health.CurrentHealth

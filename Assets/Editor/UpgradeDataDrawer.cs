@@ -35,12 +35,15 @@ namespace Upgrades
             }
             else if (upgradeType == UpgradeType.AddWeapon)
             {
-                SerializedProperty weaponPrefabProp = property.FindPropertyRelative("weaponPrefab");
-                EditorGUI.PropertyField(position, weaponPrefabProp, new GUIContent("Weapon Prefab"));
+                SerializedProperty weaponIdProp = property.FindPropertyRelative("weaponId");
+                EditorGUI.PropertyField(position, weaponIdProp, new GUIContent("Weapon ID"));
             }
             else if (upgradeType == UpgradeType.Weapon)
             {
+                SerializedProperty weaponIdProp = property.FindPropertyRelative("weaponId");
                 SerializedProperty weaponParamsVariationProp = property.FindPropertyRelative("weaponParamsVariation");
+                EditorGUI.PropertyField(position, weaponIdProp, new GUIContent("Weapon ID"));
+                position.y += singleLineHeight + 2;
                 EditorGUI.PropertyField(position, weaponParamsVariationProp, true);
             }
 
@@ -63,6 +66,7 @@ namespace Upgrades
             }
             else if (upgradeType == UpgradeType.Weapon)
             {
+                height += EditorGUIUtility.singleLineHeight + 2;
                 height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("weaponParamsVariation"), true) + 2;
             }
 

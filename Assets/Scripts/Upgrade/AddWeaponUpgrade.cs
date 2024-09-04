@@ -5,17 +5,17 @@ namespace Upgrades
     public class AddWeaponUpgrade : IUpgrade
     {
         string _upgradeName;
-        GameObject _weaponPrefab;
+        Weapons.WeaponId _weaponId;
 
-        public GameObject weaponPrefab
+        public Weapons.WeaponId weaponId
         {
-            get { return _weaponPrefab; }
+            get { return _weaponId; }
         }
 
         public void Initialize(UpgradeData upgradeData)
         {
             _upgradeName = upgradeData.upgradeName;
-            _weaponPrefab = upgradeData.weaponPrefab;
+            _weaponId = upgradeData.weaponId;
         }
     }
 }
