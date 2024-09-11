@@ -26,10 +26,8 @@ namespace Players
         void Start()
         {
             this.FixedUpdateAsObservable()
-                .Subscribe(_ =>
-                {
-                    Move(_input.Move.Value);
-                }).AddTo(this);
+                .Subscribe(_ => Move(_input.Move.Value))
+                .AddTo(this);
         }
 
         public void Initialize(float speed)

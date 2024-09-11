@@ -15,6 +15,12 @@ namespace Players
         public int PlayerId { get; private set; }
         private PlayerParams _playerParams = new PlayerParams();
 
+        void Awake()
+        {
+            _onDamaged.AddTo(this);
+            _playerDeadSubject.AddTo(this);
+        }
+
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
@@ -50,7 +56,7 @@ namespace Players
             _playerDeadSubject.OnNext(Unit.Default);
             _playerDeadSubject.OnCompleted();
 
-            // _playerDeadSubject.Dispose();
+            Destroy(gameObject);
         }
     }
 }

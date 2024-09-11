@@ -32,8 +32,7 @@ namespace Players
             player.Initialize(_players.Count);
             Debug.Log($"Player {player.PlayerId} is added.");
 
-            player
-                .PlayerDeadAsync
+            player.PlayerDeadAsync
                 .Subscribe(_ => OnPlayerDead(player.PlayerId))
                 .AddTo(this);
         }

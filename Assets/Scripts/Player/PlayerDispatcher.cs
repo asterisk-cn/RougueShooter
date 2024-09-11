@@ -15,7 +15,10 @@ public class PlayerDispatcher : MonoBehaviour
             Dispatch(p);
         }
 
-    _playerManager.Players.ObserveAdd().Subscribe(x => Dispatch(x.Value)).AddTo(this);
+        _playerManager.Players
+            .ObserveAdd()
+            .Subscribe(x => Dispatch(x.Value))
+            .AddTo(this);
     }
 
     void Dispatch(PlayerCore player)

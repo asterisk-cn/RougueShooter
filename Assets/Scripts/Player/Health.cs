@@ -1,7 +1,6 @@
 using UnityEngine;
 using UniRx;
 using Cysharp.Threading.Tasks;
-using System.Threading;
 
 public class Health : MonoBehaviour
 {
@@ -16,6 +15,8 @@ public class Health : MonoBehaviour
 
     void Awake()
     {
+        _currentHealth.AddTo(this);
+
         _damageable = GetComponentInParent<IDamageable>();
     }
 
@@ -50,10 +51,5 @@ public class Health : MonoBehaviour
         {
             Die();
         }
-    }
-
-    private void OnDestroy()
-    {
-        _currentHealth.Dispose();
     }
 }
