@@ -3,26 +3,15 @@ using UnityEngine;
 
 namespace Weapons.Bullets
 {
-    public class BasicBullet : MonoBehaviour
+    public class BaseBullet : MonoBehaviour
     {
-        private PlayerCore _owner;
-        private BulletParams _bulletParams;
-        private Rigidbody2D _rb;
+        private protected PlayerCore _owner;
+        private protected BulletParams _bulletParams;
+        private protected Rigidbody2D _rb;
 
-        void Awake()
+        private protected virtual void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
-        }
-
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            _rb.linearVelocity = transform.up * _bulletParams.speed;
         }
 
         public void Initialize(BulletParams bulletParams, PlayerCore owner)
@@ -31,9 +20,20 @@ namespace Weapons.Bullets
             _owner = owner;
         }
 
+        // Update is called once per frame
+        void Update()
+        {
+            Move();
+        }
+
+        private protected virtual void Move()
+        {
+            _rb.linearVelocity = transform.up * _bulletParams.speed;
+        }
+
         void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject != _owner)
+            if (other.transform.root != _owner.transform)
             {
                 if (other.transform.root.TryGetComponent(out IDamageable _damageable))
                 {

@@ -7,5 +7,6 @@ namespace Upgrades
         Basic,
         Triple,
         Triple01,
+        Homing,
     }
 }
