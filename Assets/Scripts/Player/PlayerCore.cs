@@ -24,7 +24,7 @@ namespace Players
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            // TODO: 依存逆にする
+            // TODO: 依存逆にする?
             GetComponentInChildren<Health>().Initialize(_playerParams.maxHealth);
             GetComponentInChildren<PlayerMove>().Initialize(_playerParams.speed);
         }
@@ -56,7 +56,8 @@ namespace Players
             _playerDeadSubject.OnNext(Unit.Default);
             _playerDeadSubject.OnCompleted();
 
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            // Destroy(gameObject);
         }
     }
 }

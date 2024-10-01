@@ -7,6 +7,11 @@ namespace Upgrades
         string _upgradeName;
         Weapons.WeaponId _weaponId;
 
+        public string upgradeName
+        {
+            get { return _upgradeName; }
+        }
+
         public Weapons.WeaponId weaponId
         {
             get { return _weaponId; }
