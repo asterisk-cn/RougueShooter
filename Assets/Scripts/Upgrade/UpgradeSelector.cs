@@ -18,6 +18,12 @@ namespace Upgrades
         private List<IUpgrade> _upgrades { get; } = new List<IUpgrade>();
         private ReactiveProperty<bool> _isActive { get; } = new ReactiveProperty<bool>(false);
 
+        void Awake()
+        {
+            _onUpgradesUpdated.AddTo(this);
+            _isActive.AddTo(this);
+        }
+
         public void Initialize()
         {
             _battle.State

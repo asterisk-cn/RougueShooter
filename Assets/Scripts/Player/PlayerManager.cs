@@ -19,6 +19,11 @@ namespace Players
             _battle = battle;
 
             SetupDefaultPlayers();
+
+            _battle.State
+                .Where(s => s == BattleState.Battle)
+                .Subscribe(_ => OnReset())
+                .AddTo(this);
         }
 
         void SetupDefaultPlayers()
@@ -32,7 +37,6 @@ namespace Players
         // TODO: SOLID principle
         void OnPlayerDead(int playerId)
         {
-            Debug.Log($"Player {playerId} is dead.");
             _battle.SetUpgradablePlayer(playerId);
             _battle.SetState(BattleState.Upgrade);
         }
@@ -46,6 +50,14 @@ namespace Players
             player.PlayerDeadAsync
                 .Subscribe(_ => OnPlayerDead(player.PlayerId))
                 .AddTo(this);
+        }
+
+        void OnReset()
+        {
+            foreach (var p in _players)
+            {
+                p.Reset();
+            }
         }
     }
 }

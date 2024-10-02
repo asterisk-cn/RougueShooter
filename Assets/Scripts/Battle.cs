@@ -16,13 +16,18 @@ public class Battle : MonoBehaviour
 
     int _upgradablePlayerId;
 
+    void Awake()
+    {
+        State.AddTo(this);
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-#if UNITY_EDITOR 
+#if UNITY_EDITOR
         // キー入力でデバッグ
         Observable.EveryUpdate()
-            .Where(_ => Input.GetKeyDown(KeyCode.Space))
+            .Where(_ => Input.GetKeyDown(KeyCode.U))
             .Subscribe(_ =>
             {
                 SetUpgradablePlayer(0);
@@ -38,23 +43,6 @@ public class Battle : MonoBehaviour
 
     public void SetUpgradablePlayer(int playerId)
     {
-        Debug.Log($"Player {playerId} is upgradable.");
         _upgradablePlayerId = playerId;
-    }
-
-    void OnBattleStart()
-    {
-        Debug.Log("Battle Start");
-    }
-
-    void OnUpgrade()
-    {
-        Debug.Log("Upgrade");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

@@ -20,22 +20,26 @@ public class Health : MonoBehaviour
         _damageable = GetComponentInParent<IDamageable>();
     }
 
-    void Start()
-    {
-
-    }
-
     public void Initialize(float maxHealth)
     {
-        this.MaxHealth = maxHealth;
-        _currentHealth.Value = maxHealth;
-
         _damageable.OnDamagedAsObservable
             .Where(x => x > 0)
             .Subscribe(x => TakeDamage(x))
             .AddTo(this);
 
+        _damageable.OnResetAsObservable
+            .Subscribe(_ => ResetHealth(maxHealth))
+            .AddTo(this);
+
+        ResetHealth(maxHealth);
+
         _initializationCompletionSource.TrySetResult();
+    }
+
+    public void ResetHealth(float maxHealth)
+    {
+        this.MaxHealth = maxHealth;
+        _currentHealth.Value = maxHealth;
     }
 
     void Die()

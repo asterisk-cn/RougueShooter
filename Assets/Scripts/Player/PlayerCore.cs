@@ -8,9 +8,13 @@ namespace Players
     {
         public IObservable<float> OnDamagedAsObservable => _onDamaged;
         public IObservable<Unit> PlayerDeadAsync => _playerDeadSubject;
+        public IObservable<Unit> OnResetAsObservable => _onReset;
 
         private Subject<float> _onDamaged = new Subject<float>();
-        private readonly AsyncSubject<Unit> _playerDeadSubject = new AsyncSubject<Unit>();
+        private AsyncSubject<Unit> _playerDeadSubject = new AsyncSubject<Unit>();
+        private Subject<Unit> _onReset = new Subject<Unit>();
+
+        public PlayerParams PlayerParams => _playerParams;
 
         public int PlayerId { get; private set; }
         private PlayerParams _playerParams = new PlayerParams();
@@ -27,12 +31,6 @@ namespace Players
             // TODO: 依存逆にする?
             GetComponentInChildren<Health>().Initialize(_playerParams.maxHealth);
             GetComponentInChildren<PlayerMove>().Initialize(_playerParams.speed);
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
 
         public void Initialize(int playerId)
@@ -58,6 +56,14 @@ namespace Players
 
             gameObject.SetActive(false);
             // Destroy(gameObject);
+        }
+
+        public void Reset()
+        {
+            _onReset.OnNext(Unit.Default);
+            _playerDeadSubject = new AsyncSubject<Unit>();
+
+            gameObject.SetActive(true);
         }
     }
 }

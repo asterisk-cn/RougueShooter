@@ -28,6 +28,8 @@ namespace Upgrades
             {
                 button.onClick.AddListener(() => OnClickUpgradeButton(_upgradeSelectButtons.IndexOf(button)));
             }
+
+            _onUpgradeSelected.AddTo(this);
         }
 
         public void Initialize()
