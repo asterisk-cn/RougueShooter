@@ -1,15 +1,16 @@
-using UniRx;
 using UnityEngine;
 using System.Collections.Generic;
+using R3;
+using ObservableCollections;
 using static Battle;
 
 namespace Players
 {
     public class PlayerManager : MonoBehaviour
     {
-        public IReactiveCollection<PlayerCore> Players => _players;
+        public ObservableList<PlayerCore> Players => _players;
 
-        private ReactiveCollection<PlayerCore> _players = new ReactiveCollection<PlayerCore>();
+        private ObservableList<PlayerCore> _players = new ObservableList<PlayerCore>();
 
         [SerializeField] private List<PlayerCore> _defaultPlayers = new List<PlayerCore>();
         private Battle _battle;

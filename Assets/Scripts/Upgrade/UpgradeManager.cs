@@ -5,15 +5,15 @@ namespace Upgrades
 {
     public class UpgradeManager : MonoBehaviour
     {
-        [SerializeField] UpgradeLoader _upgradeLoader;
-        [SerializeField] Players.PlayerStatusManager _playerStatusManager;
-        [SerializeField] Weapons.WeaponManager _weaponManager;
-        [SerializeField] List<UpgradeId> _upgradeIdList;
+        [SerializeField] private UpgradeLoader _upgradeLoader;
+        [SerializeField] private Players.PlayerStatusManager _playerStatusManager;
+        [SerializeField] private Weapons.WeaponManager _weaponManager;
+        [SerializeField] private List<UpgradeId> _upgradeIdList;
 
-        Players.PlayerParams _playerParamsVariation;
-        List<GameObject> _weaponList;
+        private Players.PlayerParams _playerParamsVariation;
+        private List<GameObject> _weaponList;
 
-        [SerializeField] List<GameObject> _weaponPrefabs;
+        [SerializeField] private List<GameObject> _weaponPrefabs;
 
         public Players.PlayerParams playerParamsVariation
         {

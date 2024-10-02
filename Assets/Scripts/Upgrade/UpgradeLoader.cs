@@ -5,7 +5,7 @@ namespace Upgrades
 {
     public class UpgradeLoader : MonoBehaviour
     {
-        [SerializeField] List<IUpgrade> _upgradeList;
+        [SerializeField] private List<IUpgrade> _upgradeList;
 
         void Awake()
         {

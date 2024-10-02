@@ -1,5 +1,5 @@
 using UnityEngine;
-using UniRx;
+using R3;
 using System;
 using System.Collections.Generic;
 
@@ -7,12 +7,12 @@ namespace Upgrades
 {
     public class UpgradeSelector : MonoBehaviour
     {
-        [SerializeField] UpgradeLoader _upgradeLoader;
-        [SerializeField] Battle _battle;
-        [SerializeField] Players.PlayerManager _playerManager;
+        [SerializeField] private UpgradeLoader _upgradeLoader;
+        [SerializeField] private Battle _battle;
+        [SerializeField] private Players.PlayerManager _playerManager;
 
-        public IObservable<List<IUpgrade>> OnUpgradesUpdatedAsObservable => _onUpgradesUpdated;
-        public IReadOnlyReactiveProperty<bool> IsActive => _isActive;
+        public Observable<List<IUpgrade>> OnUpgradesUpdatedAsObservable => _onUpgradesUpdated;
+        public ReadOnlyReactiveProperty<bool> IsActive => _isActive;
 
         private Subject<List<IUpgrade>> _onUpgradesUpdated { get; } = new Subject<List<IUpgrade>>();
         private List<IUpgrade> _upgrades { get; } = new List<IUpgrade>();

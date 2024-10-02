@@ -1,12 +1,12 @@
 using UnityEngine;
-using UniRx;
+using R3;
 using Cysharp.Threading.Tasks;
 
 public class Health : MonoBehaviour
 {
     private IDamageable _damageable;
 
-    public IReadOnlyReactiveProperty<float> CurrentHealth => _currentHealth;
+    public ReadOnlyReactiveProperty<float> CurrentHealth => _currentHealth;
     public UniTask InitializedAsync => _initializationCompletionSource.Task;
     public float MaxHealth { get; private set; }
 

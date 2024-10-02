@@ -33,7 +33,7 @@ namespace Weapons
         {
             while (!ct.IsCancellationRequested)
             {
-                _isExecuting = _input.Attack.Value;
+                _isExecuting = _input.Attack.CurrentValue;
 
                 if (_isExecuting)
                 {

@@ -6,9 +6,9 @@ namespace Weapons
 {
     public class WeaponManager : MonoBehaviour
     {
-        [SerializeField] List<GameObject> _weaponList;
-        [SerializeField] PlayerInput _input;
-        [SerializeField] PlayerCore _owner;
+        [SerializeField] private List<GameObject> _weaponList;
+        [SerializeField] private PlayerInput _input;
+        [SerializeField] private PlayerCore _owner;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {

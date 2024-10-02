@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using UniRx;
+using R3;
 using System;
 using TMPro;
 
@@ -9,13 +9,13 @@ namespace Upgrades
 {
     public class UpgradeSelectorView : MonoBehaviour
     {
-        [SerializeField] List<Button> _upgradeSelectButtons;
+        [SerializeField] private List<Button> _upgradeSelectButtons;
 
-        public IObservable<int> OnUpgradeSelectedAsObservable => _onUpgradeSelected;
+        public Observable<int> OnUpgradeSelectedAsObservable => _onUpgradeSelected;
 
-        Subject<int> _onUpgradeSelected { get; } = new Subject<int>();
-        int upgradePlayerId = -1;
-        int _selectedUpgradeIndex;
+        private Subject<int> _onUpgradeSelected { get; } = new Subject<int>();
+        private int _upgradePlayerId = -1;
+        private int _selectedUpgradeIndex;
 
         public int selectedUpgradeIndex
         {
@@ -58,6 +58,12 @@ namespace Upgrades
             {
                 _upgradeSelectButtons[i].GetComponentInChildren<TMP_Text>().text = upgrades[i].upgradeName;
             }
+        }
+
+        public void SetPlayerId(int playerId)
+        {
+            _upgradePlayerId = playerId;
+            Debug.Log($"Player {playerId} is upgradable.");
         }
 
         void SelectUpgrade(int index)

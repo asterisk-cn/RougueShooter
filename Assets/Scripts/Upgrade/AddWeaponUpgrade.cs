@@ -4,8 +4,8 @@ namespace Upgrades
 {
     public class AddWeaponUpgrade : IUpgrade
     {
-        string _upgradeName;
-        Weapons.WeaponId _weaponId;
+        private string _upgradeName;
+        private Weapons.WeaponId _weaponId;
 
         public string upgradeName
         {
