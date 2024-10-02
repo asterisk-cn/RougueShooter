@@ -1,0 +1,7 @@
+@startuml
+class UpgradeManager {
+    + ApplyAllUpgrades() : void
+    + AddUpgrade(upgradeId:UpgradeId) : void
+}
+MonoBehaviour <|-- UpgradeManager
+@enduml

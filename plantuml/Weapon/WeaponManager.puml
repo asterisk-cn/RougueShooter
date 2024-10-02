@@ -1,0 +1,7 @@
+@startuml
+namespace Weapons{
+class WeaponManager {
+    + CreateWeapons(weaponList:List<GameObject>) : void
+}
+}
+@enduml

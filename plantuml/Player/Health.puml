@@ -1,0 +1,11 @@
+@startuml
+class Health {
+    + MaxHealth : float <<get>>
+    + CurrentHealth : ReadOnlyReactiveProperty<float> <<get>>
+    + InitializedAsync : UniTask <<get>>
+    + Initialize(maxHealth:float) : void
+    + ResetHealth(maxHealth:float) : void
+}
+Health --> "CurrentHealth<float>" "ReadOnlyReactiveProperty`1"
+Health --> "InitializedAsync" UniTask
+@enduml

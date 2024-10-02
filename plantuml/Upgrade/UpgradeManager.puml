@@ -1,0 +1,8 @@
+@startuml
+namespace Upgrades{
+class UpgradeManager {
+    + ApplyAllUpgrades() : void
+    + AddUpgrade(upgradeId:UpgradeId) : void
+}
+}
+@enduml

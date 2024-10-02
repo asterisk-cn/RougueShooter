@@ -1,0 +1,5 @@
+@startuml
+class PlayerPresenter {
+    + <<async>> OnCreatePlayer(player:PlayerCore, view:HealthView) : void
+}
+@enduml

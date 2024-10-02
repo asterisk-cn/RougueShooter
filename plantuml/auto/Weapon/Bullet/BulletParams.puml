@@ -1,0 +1,6 @@
+@startuml
+class BulletParams {
+    + speed : float = 15f
+    + damage : float = 10f
+}
+@enduml

@@ -1,0 +1,6 @@
+@startuml
+class PlayerStatusManager {
+    + ApplyPlayerParamsVariation(playerParamsVariation:PlayerParams) : void
+}
+MonoBehaviour <|-- PlayerStatusManager
+@enduml

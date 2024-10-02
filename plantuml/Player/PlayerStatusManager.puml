@@ -1,0 +1,7 @@
+@startuml
+namespace Players{
+class PlayerStatusManager {
+    + ApplyPlayerParamsVariation(playerParamsVariation:PlayerParams) : void
+}
+}
+@enduml

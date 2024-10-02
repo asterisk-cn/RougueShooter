@@ -1,0 +1,8 @@
+@startuml
+namespace Weapons{
+abstract class BaseWeapon {
+    + Initialize(owner:PlayerCore, input:PlayerInput) : void
+    + ApplyWeaponParamsVariation(weaponParamsVariation:WeaponParams) : void
+}
+}
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+namespace Players{
+class PlayerMove {
+    + Initialize(speed:float) : void
+}
+}
+@enduml

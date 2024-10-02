@@ -1,0 +1,18 @@
+@startuml
+namespace Players{
+class PlayerCore {
+    + PlayerId : int <<get>>
+    + PlayerParams : PlayerParams <<get>>
+    + OnDamagedAsObservable<float> : Observable<float> <<get>>
+    + PlayerDeadAsync<Unit> : Observable<Unit> <<get>>
+    + OnResetAsObservable<Unit> : Observable<Unit> <<get>>
+    + Initialize(playerId:int) : void
+    + SetPlayerParams(playerParams:PlayerParams) : void
+    + TakeDamage(damage:float) : void
+    + OnDead() : void
+    + Reset() : void
+}
+IDamageable <|-- PlayerCore
+PlayerCore --> PlayerParams
+}
+@enduml

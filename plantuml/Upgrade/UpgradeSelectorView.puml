@@ -1,0 +1,15 @@
+@startuml
+namespace Upgrades{
+class UpgradeSelectorView {
+    + selectedUpgradeIndex : int <<get>>
+    + OnUpgradeSelectedAsObservable : IObservable<int> <<get>>
+    + Awake() : void
+    + Initialize() : void
+    + SetActive(active:bool) : void
+    + OnClickUpgradeButton(index:int) : void
+    + SetUpgrades(upgrades:List<IUpgrade>) : void
+    + SetPlayerId(playerId:int) : void
+    + ResetSelection() : void
+}
+}
+@enduml

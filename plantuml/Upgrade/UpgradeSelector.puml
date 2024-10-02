@@ -1,0 +1,11 @@
+@startuml
+namespace Upgrades{
+class UpgradeSelector {
+    + OnUpgradesUpdatedAsObservable : Observable<List<IUpgrade>>
+    + IsActive : ReadOnlyReactiveProperty<bool>
+    + Initialize() : void
+    + SetUpgrades() : void
+    + ApplyUpgrade(index:int) : void
+}
+}
+@enduml

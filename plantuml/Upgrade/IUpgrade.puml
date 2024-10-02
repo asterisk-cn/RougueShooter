@@ -1,0 +1,7 @@
+@startuml
+namespace Upgrades{
+interface IUpgrade {
+    + upgradeName : string <<get>>
+}
+}
+@enduml

@@ -1,0 +1,6 @@
+@startuml
+class WeaponManager {
+    + CreateWeapons(weaponList:List<GameObject>) : void
+}
+MonoBehaviour <|-- WeaponManager
+@enduml

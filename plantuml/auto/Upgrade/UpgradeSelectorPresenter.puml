@@ -1,0 +1,6 @@
+@startuml
+class UpgradeSelectorPresenter {
+    + Initialize(model:UpgradeSelector, view:UpgradeSelectorView) : void
+}
+MonoBehaviour <|-- UpgradeSelectorPresenter
+@enduml

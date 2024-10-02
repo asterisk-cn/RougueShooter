@@ -1,0 +1,7 @@
+@startuml
+namespace Weapons.Bullets{
+class BaseBullet {
+    + Initialize(bulletParams:BulletParams, owner:PlayerCore) : void
+}
+}
+@enduml

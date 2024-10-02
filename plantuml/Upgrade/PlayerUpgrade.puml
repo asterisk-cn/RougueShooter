@@ -1,0 +1,9 @@
+@startuml
+namespace Upgrades{
+class PlayerUpgrade {
+    + upgradeName : string <<get>>
+    + Initialize(upgradeData:UpgradeData) : void
+}
+IUpgrade <|-- PlayerUpgrade
+}
+@enduml

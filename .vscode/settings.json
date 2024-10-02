@@ -57,5 +57,6 @@
         "Temp/": true
     },
     "dotnet.defaultSolution": "Rogue Shooter.sln",
-    "cSpell.words": ["Cysharp", "Lerp", "Mathf", "Reorderable", "Rigidbody", "Scriptable"]
+    "cSpell.words": ["Cysharp", "Lerp", "Mathf", "Reorderable", "Rigidbody", "Scriptable"],
+    "csharp2plantuml.inputPath": "Assets/Scripts"
 }

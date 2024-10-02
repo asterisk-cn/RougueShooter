@@ -1,0 +1,6 @@
+@startuml
+class BaseBullet {
+    + Initialize(bulletParams:BulletParams, owner:PlayerCore) : void
+}
+MonoBehaviour <|-- BaseBullet
+@enduml
