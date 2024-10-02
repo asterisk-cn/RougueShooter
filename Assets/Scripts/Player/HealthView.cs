@@ -8,6 +8,7 @@ public class HealthView : MonoBehaviour
 
     [SerializeField] private float _tweenDuration = 0.5f;
 
+    //! TODO: 非同期処理
     public void SetHealth(float value)
     {
         Tween.To(

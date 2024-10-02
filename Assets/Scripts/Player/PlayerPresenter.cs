@@ -1,5 +1,5 @@
 using UnityEngine;
-using UniRx;
+using R3;
 using Players;
 using Cysharp.Threading.Tasks;
 
@@ -11,7 +11,7 @@ public class PlayerPresenter : MonoBehaviour
 
         await health.InitializedAsync;
 
-        view.Initialize((float)health.CurrentHealth.Value / health.MaxHealth);
+        view.Initialize((float)health.CurrentHealth.CurrentValue / health.MaxHealth);
 
         health.CurrentHealth
             .Subscribe(x => view.SetHealth((float)x / health.MaxHealth))

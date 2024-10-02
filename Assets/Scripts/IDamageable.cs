@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
-using UniRx;
+using R3;
 
 public interface IDamageable
 {
-    public IObservable<float> OnDamagedAsObservable { get; }
-    public IObservable<Unit> OnResetAsObservable { get; }
+    public Observable<float> OnDamagedAsObservable { get; }
+    public Observable<Unit> OnResetAsObservable { get; }
 
     public void TakeDamage(float damage);
     public void OnDead();

@@ -1,13 +1,13 @@
 using UnityEngine;
-using UniRx;
 using UnityEngine.InputSystem;
+using R3;
 
 namespace Players
 {
     public class PlayerInput : MonoBehaviour
     {
-        public IReadOnlyReactiveProperty<Vector2> Move => _move;
-        public IReadOnlyReactiveProperty<bool> Attack => _attack;
+        public ReadOnlyReactiveProperty<Vector2> Move => _move;
+        public ReadOnlyReactiveProperty<bool> Attack => _attack;
 
         private readonly ReactiveProperty<Vector2> _move = new ReactiveProperty<Vector2>();
         private readonly ReactiveProperty<bool> _attack = new ReactiveProperty<bool>();

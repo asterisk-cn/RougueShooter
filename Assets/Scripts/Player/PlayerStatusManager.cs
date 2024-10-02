@@ -5,12 +5,12 @@ namespace Players
 {
     public class PlayerStatusManager : MonoBehaviour
     {
-        [SerializeField] PlayerCore _player;
+        [SerializeField] private PlayerCore _player;
 
-        PlayerParams _defaultPlayerParams;
-        PlayerParams _currentPlayerParams;
+        private PlayerParams _defaultPlayerParams;
+        private PlayerParams _currentPlayerParams;
 
-        [SerializeField] Upgrades.UpgradeManager _upgradeManager;
+        [SerializeField] private Upgrades.UpgradeManager _upgradeManager;
 
         void Awake()
         {

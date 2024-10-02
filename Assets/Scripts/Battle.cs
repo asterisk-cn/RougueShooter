@@ -1,5 +1,5 @@
 using UnityEngine;
-using UniRx;
+using R3;
 
 public class Battle : MonoBehaviour
 {
@@ -11,10 +11,11 @@ public class Battle : MonoBehaviour
         End
     }
 
-    public ReactiveProperty<BattleState> State { get; } = new ReactiveProperty<BattleState>(BattleState.Start);
+    public ReadOnlyReactiveProperty<BattleState> State => _state;
     public int UpgradablePlayerId => _upgradablePlayerId;
 
-    int _upgradablePlayerId;
+    private ReactiveProperty<BattleState> _state = new ReactiveProperty<BattleState>(BattleState.Start);
+    private int _upgradablePlayerId;
 
     void Awake()
     {
@@ -38,7 +39,7 @@ public class Battle : MonoBehaviour
 
     public void SetState(BattleState state)
     {
-        State.Value = state;
+        _state.Value = state;
     }
 
     public void SetUpgradablePlayer(int playerId)

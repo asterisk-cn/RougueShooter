@@ -1,17 +1,18 @@
 using System;
 using UnityEngine;
-using UniRx;
+using R3;
+using Cysharp.Threading.Tasks;
 
 namespace Players
 {
     public class PlayerCore : MonoBehaviour, IDamageable
     {
-        public IObservable<float> OnDamagedAsObservable => _onDamaged;
-        public IObservable<Unit> PlayerDeadAsync => _playerDeadSubject;
-        public IObservable<Unit> OnResetAsObservable => _onReset;
+        public Observable<float> OnDamagedAsObservable => _onDamaged;
+        public Observable<Unit> PlayerDeadAsync => _playerDeadSubject;
+        public Observable<Unit> OnResetAsObservable => _onReset;
 
         private Subject<float> _onDamaged = new Subject<float>();
-        private AsyncSubject<Unit> _playerDeadSubject = new AsyncSubject<Unit>();
+        private Subject<Unit> _playerDeadSubject = new Subject<Unit>();
         private Subject<Unit> _onReset = new Subject<Unit>();
 
         public PlayerParams PlayerParams => _playerParams;
@@ -52,16 +53,13 @@ namespace Players
         public void OnDead()
         {
             _playerDeadSubject.OnNext(Unit.Default);
-            _playerDeadSubject.OnCompleted();
 
             gameObject.SetActive(false);
-            // Destroy(gameObject);
         }
 
         public void Reset()
         {
             _onReset.OnNext(Unit.Default);
-            _playerDeadSubject = new AsyncSubject<Unit>();
 
             gameObject.SetActive(true);
         }

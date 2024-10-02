@@ -4,8 +4,8 @@ namespace Upgrades
 {
     public class PlayerUpgrade : IUpgrade
     {
-        string _upgradeName;
-        Players.PlayerParams _playerParamsVariation;
+        private string _upgradeName;
+        private Players.PlayerParams _playerParamsVariation;
 
         public string upgradeName
         {

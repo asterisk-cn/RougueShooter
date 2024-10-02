@@ -1,8 +1,8 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System.Threading;
-using UniRx;
-using UniRx.Triggers;
+using R3;
+using R3.Triggers;
 
 namespace Players
 {
@@ -26,7 +26,7 @@ namespace Players
         void Start()
         {
             this.FixedUpdateAsObservable()
-                .Subscribe(_ => Move(_input.Move.Value))
+                .Subscribe(_ => Move(_input.Move.CurrentValue))
                 .AddTo(this);
         }
 

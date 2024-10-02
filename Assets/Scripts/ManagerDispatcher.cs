@@ -1,5 +1,5 @@
 using UnityEngine;
-using UniRx;
+using R3;
 using Players;
 using Upgrades;
 
@@ -18,7 +18,6 @@ public class ManagerDispatcher : MonoBehaviour
         _playerManager.Initialize(_battle);
 
         var upgradeSelectorView = _upgradeSelector.GetComponent<UpgradeSelectorView>();
-        Debug.Log(upgradeSelectorView);
         _upgradeSelectorPresenter.Initialize(_upgradeSelector, upgradeSelectorView);
     }
 }
