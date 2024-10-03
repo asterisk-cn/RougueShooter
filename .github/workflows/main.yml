@@ -17,9 +17,9 @@ jobs:
             #画像生成（最後のlsはGitActionのコンソール上で結果確認するため）
             - name: Create Images
               run: |
-                  cd ./plantuml
+                  cd ./plantuml/target
                   mkdir -p "$OUTPUT_BASE"
-                  for puml in $(find . -type f -name "*.puml" ! -path "*/auto/*")
+                  for puml in $(find . -type f -name "*.puml")
                   do
                       output_file="${puml#./}"
                       output_file="${output_file%.*}"
@@ -30,7 +30,7 @@ jobs:
                   done
                   ls -l
               env:
-                  OUTPUT_BASE: ./out
+                  OUTPUT_BASE: ${{ github.workspace }}/plantuml/out
             #git commit & git push
             - name: Commit changes
               uses: EndBug/add-and-commit@v5
