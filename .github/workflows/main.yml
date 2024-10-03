@@ -1,19 +1,42 @@
 name: generate plantuml
-on: push
+on:
+    push:
+        paths:
+            - "plantuml/**/*.puml"
+    workflow_dispatch:
 jobs:
-    generate_plantuml:
-        runs-on: ubuntu-latest
-        name: plantuml
+    build:
+        runs-on: macos-latest
         steps:
-            - name: checkout
-              uses: actions/checkout@v1
+            #git checkout
+            - uses: actions/checkout@v2
+            #PlantUMLのパッケージインストール
+            - name: Install packages
+              run: |
+                  brew install plantuml
+            #画像生成（最後のlsはGitActionのコンソール上で結果確認するため）
+            - name: Create Images
+              run: |
+                  cd ./plantuml
+                  mkdir -p "$OUTPUT_BASE"
+                  for puml in $(find . -type f -name "*.puml" ! -path "*/auto/*")
+                  do
+                      output_file="${puml#./}"
+                      output_file="${output_file%.*}"
+                      output_path="$OUTPUT_BASE/$output_file"
+                      output_dir="$(dirname "$output_path")"
+                      mkdir -p "$output_dir"
+                      cat ./${puml} | plantuml -tsvg -p > "$output_path.svg"
+                  done
+                  ls -l
+              env:
+                  OUTPUT_BASE: ./out
+            #git commit & git push
+            - name: Commit changes
+              uses: EndBug/add-and-commit@v5
               with:
-                  fetch-depth: 1
-            - name: plantuml
-              id: plantuml
-              uses: grassedge/generate-plantuml-action@v1.5
-              with:
-                  path: plantuml
                   message: "Render PlantUML files"
+                  add: "./plantuml/*"
+                  push: true
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
