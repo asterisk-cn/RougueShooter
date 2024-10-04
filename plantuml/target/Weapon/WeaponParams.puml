@@ -1,0 +1,8 @@
+@startuml
+namespace Weapons{
+class WeaponParams {
+    + fireRate : float = 0.5f
+}
+}
+Weapons.Bullets.BulletParams --* Weapons.WeaponParams
+@enduml

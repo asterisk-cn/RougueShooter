@@ -1,0 +1,8 @@
+@startuml
+interface IDamageable {
+    + OnDamagedAsObservable : Observable<float>
+    + OnResetAsObservable : Observable<Unit>
+    + TakeDamage(damage:float) : void
+    + OnDead() : void
+}
+@enduml

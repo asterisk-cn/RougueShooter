@@ -1,0 +1,27 @@
+@startuml
+namespace Upgrades{
+enum UpgradeType {
+    Player,
+    AddWeapon,
+    Weapon,
+}
+class UpgradeData {
+    + id : string
+    + upgradeName : string
+    + upgradeType : UpgradeType
+    + playerParamsVariation : PlayerParams
+    + weaponParamsVariation : WeaponParams
+    + weaponId : WeaponId
+}
+class UpgradeSetting {
+    + upgradeDataList : List<UpgradeData>
+    + GetUpgradeData(id:UpgradeId) : UpgradeData
+    + CreateEnumFile() : void
+}
+}
+Upgrades.UpgradeType --* UpgradeData
+Players.PlayerParams --* UpgradeData
+Weapons.WeaponParams --* UpgradeData
+UpgradeSetting --* UpgradeData
+Upgrades.UpgradeId <.. UpgradeSetting
+@enduml

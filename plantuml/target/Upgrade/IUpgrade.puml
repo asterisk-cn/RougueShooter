@@ -1,0 +1,9 @@
+@startuml
+namespace Upgrades{
+interface IUpgrade {
+    + upgradeName : string <<get>>
+    - Initialize(upgradeData:UpgradeData) : void
+}
+}
+Upgrades.UpgradeData <.. IUpgrade
+@enduml

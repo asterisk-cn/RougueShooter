@@ -1,0 +1,7 @@
+@startuml
+abstract class BaseWeapon {
+    + Initialize(owner:PlayerCore, input:PlayerInput) : void
+    + ApplyWeaponParamsVariation(weaponParamsVariation:WeaponParams) : void
+}
+MonoBehaviour <|-- BaseWeapon
+@enduml

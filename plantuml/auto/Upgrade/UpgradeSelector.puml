@@ -1,0 +1,14 @@
+@startuml
+class UpgradeSelector {
+    + Initialize() : void
+    + SetUpgrades() : void
+    + ApplyUpgrade(index:int) : void
+}
+class "Observable`1"<T> {
+}
+class "ReadOnlyReactiveProperty`1"<T> {
+}
+MonoBehaviour <|-- UpgradeSelector
+UpgradeSelector --> "OnUpgradesUpdatedAsObservable<List<IUpgrade>>" "Observable`1"
+UpgradeSelector --> "IsActive<bool>" "ReadOnlyReactiveProperty`1"
+@enduml

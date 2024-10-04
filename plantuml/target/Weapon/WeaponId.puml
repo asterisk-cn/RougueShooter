@@ -1,0 +1,9 @@
+@startuml
+namespace Weapons{
+enum WeaponId {
+    BasicGun,
+    TripleGun,
+    HomingGun,
+}
+}
+@enduml

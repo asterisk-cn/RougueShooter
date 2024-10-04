@@ -1,0 +1,23 @@
+@startuml
+enum UpgradeType {
+    Player,
+    AddWeapon,
+    Weapon,
+}
+class UpgradeData {
+    + id : string
+    + upgradeName : string
+}
+class UpgradeSetting {
+    + GetUpgradeData(id:UpgradeId) : UpgradeData
+    + CreateEnumFile() : void
+}
+class "List`1"<T> {
+}
+UpgradeData --> "upgradeType" UpgradeType
+UpgradeData --> "playerParamsVariation" PlayerParams
+UpgradeData --> "weaponParamsVariation" WeaponParams
+UpgradeData --> "weaponId" WeaponId
+ScriptableObject <|-- UpgradeSetting
+UpgradeSetting --> "upgradeDataList<UpgradeData>" "List`1"
+@enduml

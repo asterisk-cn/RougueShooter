@@ -1,0 +1,12 @@
+@startuml
+namespace Upgrades{
+class AddWeaponUpgrade {
+    + upgradeName : string <<get>>
+    + weaponId : WeaponId <<get>>
+    + Initialize(upgradeData:UpgradeData) : void
+}
+Upgrades.IUpgrade <|-- AddWeaponUpgrade
+Upgrades.UpgradeData <.. AddWeaponUpgrade
+Weapons.WeaponId --* AddWeaponUpgrade
+}
+@enduml

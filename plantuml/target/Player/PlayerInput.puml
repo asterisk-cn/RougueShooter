@@ -1,0 +1,8 @@
+@startuml
+namespace Players{
+class PlayerInput {
+    + Move : ReadOnlyReactiveProperty<Vector2> <<get>>
+    + Attack : ReadOnlyReactiveProperty<bool> <<get>>
+}
+}
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+namespace Players{
+class PlayerManager {
+    + Players : ObservableList<Player> <<get>>
+    + Initialize(battle:Battle) : void
+}
+}
+Players.PlayerCore --* PlayerManager
+Battle --> PlayerManager
+@enduml

@@ -1,0 +1,5 @@
+@startuml
+class WeaponParams {
+    + fireRate : float = 0.5f
+}
+@enduml

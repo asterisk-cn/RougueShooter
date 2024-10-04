@@ -1,0 +1,11 @@
+@startuml
+namespace Upgrades{
+class UpgradeLoader {
+    + GetUpgrade(upgradeId:UpgradeId) : IUpgrade
+    + GetUpgradeCount() : int
+}
+}
+Upgrades.IUpgrade --* Upgrades.UpgradeLoader
+Upgrades.UpgradeId <.. Upgrades.UpgradeLoader
+Upgrades.UpgradeData <.. Upgrades.UpgradeLoader
+@enduml

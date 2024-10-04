@@ -5,6 +5,7 @@ using Players;
 
 public class PlayerDispatcher : MonoBehaviour
 {
+    //? TODO: PlayerManagerで管理するほうがよさそう
     [SerializeField] private PlayerManager _playerManager;
     [SerializeField] private PlayerPresenter _playerPresenter;
 

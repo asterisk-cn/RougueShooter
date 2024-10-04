@@ -1,0 +1,9 @@
+@startuml
+class PlayerManager {
+    + Initialize(battle:Battle) : void
+}
+class "ObservableList`1"<T> {
+}
+MonoBehaviour <|-- PlayerManager
+PlayerManager --> "Players<PlayerCore>" "ObservableList`1"
+@enduml

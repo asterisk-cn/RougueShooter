@@ -1,0 +1,5 @@
+@startuml
+class FollowObject {
+}
+MonoBehaviour <|-- FollowObject
+@enduml

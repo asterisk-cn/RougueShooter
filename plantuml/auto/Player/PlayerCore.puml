@@ -1,0 +1,18 @@
+@startuml
+class PlayerCore {
+    + PlayerId : int <<get>>
+    + Initialize(playerId:int) : void
+    + SetPlayerParams(playerParams:PlayerParams) : void
+    + TakeDamage(damage:float) : void
+    + OnDead() : void
+    + Reset() : void
+}
+class "Observable`1"<T> {
+}
+MonoBehaviour <|-- PlayerCore
+IDamageable <|-- PlayerCore
+PlayerCore --> "OnDamagedAsObservable<float>" "Observable`1"
+PlayerCore --> "PlayerDeadAsync<Unit>" "Observable`1"
+PlayerCore --> "OnResetAsObservable<Unit>" "Observable`1"
+PlayerCore --> "PlayerParams" PlayerParams
+@enduml

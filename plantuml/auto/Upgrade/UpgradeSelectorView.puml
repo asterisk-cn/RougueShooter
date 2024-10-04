@@ -1,0 +1,16 @@
+@startuml
+class UpgradeSelectorView {
+    + selectedUpgradeIndex : int <<get>>
+    + Awake() : void
+    + Initialize() : void
+    + SetActive(active:bool) : void
+    + OnClickUpgradeButton(index:int) : void
+    + SetUpgrades(upgrades:List<IUpgrade>) : void
+    + SetPlayerId(playerId:int) : void
+    + ResetSelection() : void
+}
+class "Observable`1"<T> {
+}
+MonoBehaviour <|-- UpgradeSelectorView
+UpgradeSelectorView --> "OnUpgradeSelectedAsObservable<int>" "Observable`1"
+@enduml

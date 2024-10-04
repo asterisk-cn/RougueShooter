@@ -1,0 +1,10 @@
+@startuml
+namespace Weapons{
+class WeaponManager {
+    + CreateWeapons(weaponList:List<GameObject>) : void
+}
+}
+Players.PlayerCore --> WeaponManager
+Players.PlayerInput --> WeaponManager
+Weapons.BasicGun <.. WeaponManager
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+namespace Upgrades{
+class UpgradeManager {
+    + ApplyAllUpgrades() : void
+    + AddUpgrade(upgradeId:UpgradeId) : void
+}
+}
+Upgrades.UpgradeLoader --> UpgradeManager
+Players.PlayerStatusManager --> UpgradeManager
+Weapons.WeaponManager --> UpgradeManager
+Players.PlayerParams --* UpgradeManager
+Upgrades.UpgradeId <..* UpgradeManager
+@enduml

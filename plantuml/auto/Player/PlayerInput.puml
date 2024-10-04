@@ -1,0 +1,11 @@
+@startuml
+class PlayerInput {
+    + OnMove(context:InputAction.CallbackContext) : void
+    + OnAttack(context:InputAction.CallbackContext) : void
+}
+class "ReadOnlyReactiveProperty`1"<T> {
+}
+MonoBehaviour <|-- PlayerInput
+PlayerInput --> "Move<Vector2>" "ReadOnlyReactiveProperty`1"
+PlayerInput --> "Attack<bool>" "ReadOnlyReactiveProperty`1"
+@enduml

@@ -10,6 +10,7 @@ namespace Players
         private PlayerParams _defaultPlayerParams;
         private PlayerParams _currentPlayerParams;
 
+        //! TODO: ?
         [SerializeField] private Upgrades.UpgradeManager _upgradeManager;
 
         void Awake()

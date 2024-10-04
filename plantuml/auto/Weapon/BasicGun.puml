@@ -1,0 +1,5 @@
+@startuml
+class BasicGun {
+}
+BaseWeapon <|-- BasicGun
+@enduml

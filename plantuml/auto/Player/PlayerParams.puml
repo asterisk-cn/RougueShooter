@@ -1,0 +1,6 @@
+@startuml
+class PlayerParams {
+    + maxHealth : float
+    + speed : float
+}
+@enduml

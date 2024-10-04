@@ -1,0 +1,10 @@
+@startuml
+namespace Players{
+class PlayerStatusManager {
+    + ApplyPlayerParamsVariation(playerParamsVariation:PlayerParams) : void
+}
+}
+Players.PlayerCore --> PlayerStatusManager
+Upgrades.UpgradeManager --> PlayerStatusManager
+Players.PlayerParams --* PlayerStatusManager
+@enduml

@@ -1,0 +1,8 @@
+@startuml
+namespace Players{
+class PlayerSetting {
+    + playerParams : PlayerParams
+}
+Players.PlayerParams --* PlayerSetting
+}
+@enduml

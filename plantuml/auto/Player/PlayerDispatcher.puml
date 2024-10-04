@@ -1,0 +1,5 @@
+@startuml
+class PlayerDispatcher {
+}
+MonoBehaviour <|-- PlayerDispatcher
+@enduml

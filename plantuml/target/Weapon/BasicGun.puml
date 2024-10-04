@@ -1,0 +1,8 @@
+@startuml
+namespace Weapons{
+class BasicGun {
+}
+}
+Weapons.BaseWeapon <|-- BasicGun
+Weapons.Bullets.BaseBullet --> BasicGun
+@enduml

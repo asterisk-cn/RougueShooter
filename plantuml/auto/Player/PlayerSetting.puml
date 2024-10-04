@@ -1,0 +1,6 @@
+@startuml
+class PlayerSetting {
+}
+ScriptableObject <|-- PlayerSetting
+PlayerSetting --> "playerParams" PlayerParams
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+namespace Weapons.Bullets{
+class HomingBullet {
+}
+BaseBullet <|-- HomingBullet
+}
+@enduml
