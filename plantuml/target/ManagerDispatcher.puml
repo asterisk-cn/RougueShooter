@@ -1,4 +1,8 @@
 @startuml
 class ManagerDispatcher {
 }
+Battle --> ManagerDispatcher
+Players.PlayerManager --> ManagerDispatcher
+Upgrades.UpgradeSelector --> ManagerDispatcher
+Upgrades.UpgradeSelectorPresenter --> ManagerDispatcher
 @enduml

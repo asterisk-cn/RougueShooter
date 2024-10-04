@@ -12,4 +12,5 @@ class UpgradeSelectorView {
     + ResetSelection() : void
 }
 }
+Upgrades.IUpgrade <.. UpgradeSelectorView
 @enduml

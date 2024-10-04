@@ -1,5 +1,7 @@
 @startuml
 class PlayerDispatcher {
 }
-
+Players.PlayerManager --> PlayerDispatcher
+PlayerPresenter --> PlayerDispatcher
+Players.PlayerCore <.. PlayerDispatcher
 @enduml

@@ -2,6 +2,7 @@
 namespace Weapons{
 class BasicGun {
 }
-BaseWeapon <|-- BasicGun
 }
+Weapons.BaseWeapon <|-- BasicGun
+Weapons.Bullets.BaseBullet --> BasicGun
 @enduml

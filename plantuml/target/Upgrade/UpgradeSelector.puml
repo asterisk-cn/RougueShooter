@@ -8,4 +8,9 @@ class UpgradeSelector {
     + ApplyUpgrade(index:int) : void
 }
 }
+Upgrades.UpgradeLoader --> UpgradeSelector
+Battle --> UpgradeSelector
+Players.PlayerManager --> UpgradeSelector
+Upgrades.IUpgrade --* UpgradeSelector
+Upgrades.UpgradeManager <.. UpgradeSelector
 @enduml

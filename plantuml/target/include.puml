@@ -1,9 +1,7 @@
 @startuml
-!include ./Utility.puml
 !include ./ManagerDispatcher.puml
 !include ./IDamageable.puml
 !include ./Battle.puml
-!include ./FollowObject.puml
 !include ./Upgrade/WeaponUpgrade.puml
 !include ./Upgrade/IUpgrade.puml
 !include ./Upgrade/UpgradeSelectorPresenter.puml

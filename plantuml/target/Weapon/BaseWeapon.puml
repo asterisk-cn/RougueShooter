@@ -5,4 +5,7 @@ abstract class BaseWeapon {
     + ApplyWeaponParamsVariation(weaponParamsVariation:WeaponParams) : void
 }
 }
+Players.PlayerCore --> BaseWeapon
+Players.PlayerInput --> BaseWeapon
+Weapons.WeaponParams --* BaseWeapon
 @enduml

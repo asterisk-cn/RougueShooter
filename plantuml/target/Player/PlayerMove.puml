@@ -4,4 +4,5 @@ class PlayerMove {
     + Initialize(speed:float) : void
 }
 }
+Players.PlayerInput --> PlayerMove
 @enduml

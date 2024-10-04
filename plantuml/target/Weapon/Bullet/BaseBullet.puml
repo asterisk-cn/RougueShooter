@@ -4,4 +4,6 @@ class BaseBullet {
     + Initialize(bulletParams:BulletParams, owner:PlayerCore) : void
 }
 }
+Players.PlayerCore --> BaseBullet
+Weapons.Bullets.BulletParams --* BaseBullet
 @enduml

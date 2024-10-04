@@ -5,4 +5,6 @@ class PlayerManager {
     + Initialize(battle:Battle) : void
 }
 }
+Players.PlayerCore --* PlayerManager
+Battle --> PlayerManager
 @enduml

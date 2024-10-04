@@ -2,4 +2,7 @@
 class PlayerPresenter {
     + <<async>> OnCreatePlayer(player:PlayerCore, view:HealthView) : void
 }
+PlayerCore <.. PlayerPresenter
+HealthView <.. PlayerPresenter
+Health <.. PlayerPresenter
 @enduml

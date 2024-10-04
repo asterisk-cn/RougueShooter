@@ -4,4 +4,6 @@ class UpgradeSelectorPresenter {
     + Initialize(model:UpgradeSelector, view:UpgradeSelectorView) : void
 }
 }
+Upgrades.UpgradeSelector <.. UpgradeSelectorPresenter
+Upgrades.UpgradeSelectorView <.. UpgradeSelectorPresenter
 @enduml

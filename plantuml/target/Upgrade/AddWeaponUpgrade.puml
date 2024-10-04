@@ -2,8 +2,11 @@
 namespace Upgrades{
 class AddWeaponUpgrade {
     + upgradeName : string <<get>>
+    + weaponId : WeaponId <<get>>
     + Initialize(upgradeData:UpgradeData) : void
 }
-IUpgrade <|-- AddWeaponUpgrade
+Upgrades.IUpgrade <|-- AddWeaponUpgrade
+Upgrades.UpgradeData <.. AddWeaponUpgrade
+Weapons.WeaponId --* AddWeaponUpgrade
 }
 @enduml

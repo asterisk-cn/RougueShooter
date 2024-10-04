@@ -13,6 +13,6 @@ class PlayerCore {
     + Reset() : void
 }
 IDamageable <|-- PlayerCore
-PlayerCore --> PlayerParams
+Players.PlayerParams --> PlayerCore
 }
 @enduml

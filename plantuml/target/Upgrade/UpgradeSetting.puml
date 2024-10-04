@@ -18,11 +18,10 @@ class UpgradeSetting {
     + GetUpgradeData(id:UpgradeId) : UpgradeData
     + CreateEnumFile() : void
 }
-UpgradeData --> UpgradeType
-UpgradeData --> PlayerParams
-UpgradeData --> WeaponParams
-UpgradeData --> WeaponId
-ScriptableObject <|-- UpgradeSetting
-UpgradeSetting --> UpgradeData
 }
+Upgrades.UpgradeType --* UpgradeData
+Players.PlayerParams --* UpgradeData
+Weapons.WeaponParams --* UpgradeData
+UpgradeSetting --* UpgradeData
+Upgrades.UpgradeId <.. UpgradeSetting
 @enduml

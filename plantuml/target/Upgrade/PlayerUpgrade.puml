@@ -5,5 +5,7 @@ class PlayerUpgrade {
     + Initialize(upgradeData:UpgradeData) : void
 }
 IUpgrade <|-- PlayerUpgrade
+Upgrades.UpgradeData <.. PlayerUpgrade
+Players.PlayerParams --* PlayerUpgrade
 }
 @enduml

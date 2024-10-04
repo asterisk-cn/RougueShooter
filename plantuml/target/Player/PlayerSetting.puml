@@ -3,6 +3,6 @@ namespace Players{
 class PlayerSetting {
     + playerParams : PlayerParams
 }
-PlayerSetting --> PlayerParams
+Players.PlayerParams --* PlayerSetting
 }
 @enduml
