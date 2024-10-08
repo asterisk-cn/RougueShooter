@@ -59,18 +59,5 @@ namespace Weapons.Bullets
                 }
             }
         }
-
-        void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.gameObject != _owner)
-            {
-                if (other.transform.root.TryGetComponent(out IDamageable _damageable))
-                {
-                    _damageable.TakeDamage(_bulletParams.damage);
-                }
-
-                Destroy(gameObject);
-            }
-        }
     }
 }

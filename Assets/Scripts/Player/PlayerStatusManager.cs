@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using R3;
 
 namespace Players
 {
@@ -7,15 +8,19 @@ namespace Players
     {
         [SerializeField] private PlayerCore _player;
 
+        // TODO: UniTask
+        public Observable<Unit> OnInitializedAsync => _onInitialized;
+
+        private Subject<Unit> _onInitialized = new Subject<Unit>();
+
         private PlayerParams _defaultPlayerParams;
         private PlayerParams _currentPlayerParams;
-
-        //! TODO: ?
-        [SerializeField] private Upgrades.UpgradeManager _upgradeManager;
 
         void Awake()
         {
             LoadPlayerSetting();
+
+            _onInitialized.OnNext(Unit.Default);
         }
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created

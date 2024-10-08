@@ -1,26 +1,29 @@
-using UnityEngine;
 using R3;
+using VContainer.Unity;
 
 namespace Upgrades
 {
-    public class UpgradeSelectorPresenter : MonoBehaviour
+    public class UpgradeSelectorPresenter : IPostInitializable
     {
-        public void Initialize(UpgradeSelector model, UpgradeSelectorView view)
+        private readonly UpgradeSelector _model;
+        private readonly UpgradeSelectorView _view;
+
+        public UpgradeSelectorPresenter(UpgradeSelector model, UpgradeSelectorView view)
         {
-            view.Initialize();
-            model.Initialize();
+            _model = model;
+            _view = view;
+        }
 
-            model.OnUpgradesUpdatedAsObservable
-                .Subscribe(x => view.SetUpgrades(x))
-                .AddTo(this);
+        public void PostInitialize()
+        {
+            _model.OnUpgradesUpdatedAsObservable
+                .Subscribe(x => _view.SetUpgrades(x));
 
-            model.IsActive
-                .Subscribe(x => view.SetActive(x))
-                .AddTo(this);
+            _model.IsActive
+                .Subscribe(x => _view.SetActive(x));
 
-            view.OnUpgradeSelectedAsObservable
-                .Subscribe(x => model.ApplyUpgrade(x))
-                .AddTo(this);
+            _view.OnUpgradeSelectedAsObservable
+                .Subscribe(x => _model.ApplyUpgrade(x));
         }
     }
 }

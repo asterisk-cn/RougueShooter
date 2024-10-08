@@ -1,25 +1,41 @@
 using UnityEngine;
 using R3;
+using VContainer;
+using VContainer.Unity;
+using Players;
+using Managers;
 
-public class Battle : MonoBehaviour
+public enum BattleState
 {
-    public enum BattleState
-    {
-        Start,
-        Battle,
-        Upgrade,
-        End
-    }
+    Start,
+    Battle,
+    Upgrade,
+    End
+}
 
-    public ReadOnlyReactiveProperty<BattleState> State => _state;
+public class Battle : MonoBehaviour, IBattleStateProvider
+{
+    public ReadOnlyReactiveProperty<BattleState> CurrentState => _state;
     public int UpgradablePlayerId => _upgradablePlayerId;
 
     private ReactiveProperty<BattleState> _state = new ReactiveProperty<BattleState>(BattleState.Start);
     private int _upgradablePlayerId;
 
-    void Awake()
+    [Inject]
+    public void Construct()
     {
-        State.AddTo(this);
+        PostInitialize();
+    }
+
+    public void PostInitialize()
+    {
+        _state
+            .Where(s => s == BattleState.Battle)
+            .Subscribe(_ => OnBattle())
+            .AddTo(this);
+
+
+        CurrentState.AddTo(this);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -45,5 +61,17 @@ public class Battle : MonoBehaviour
     public void SetUpgradablePlayer(int playerId)
     {
         _upgradablePlayerId = playerId;
+    }
+
+    public void OnPlayerDead(int playerId)
+    {
+        SetUpgradablePlayer(playerId);
+        SetState(BattleState.Upgrade);
+        Debug.Log($"Player {playerId} is dead.");
+    }
+
+    private void OnBattle()
+    {
+        Debug.Log("Battle phase started.");
     }
 }

@@ -2,25 +2,33 @@ using UnityEngine;
 using UnityEngine.UI;
 using MagicTween;
 
-public class HealthView : MonoBehaviour
+namespace Players
 {
-    [SerializeField] private Slider _healthSlider;
-
-    [SerializeField] private float _tweenDuration = 0.5f;
-
-    //! TODO: 非同期処理
-    public void SetHealth(float value)
+    public class HealthView : MonoBehaviour
     {
-        Tween.To(
-            () => _healthSlider.value,
-            x => _healthSlider.value = x,
-            value,
-            _tweenDuration
-        );
-    }
+        [SerializeField] private Slider _healthSlider;
 
-    public void Initialize(float value)
-    {
-        _healthSlider.value = value;
+        [SerializeField] private float _tweenDuration = 0.5f;
+
+        //! TODO: 非同期処理
+        public void SetHealth(float value)
+        {
+            Tween.To(
+                () => _healthSlider.value,
+                x => _healthSlider.value = x,
+                value,
+                _tweenDuration
+            );
+        }
+
+        public void SetHealthWithoutAnimation(float value)
+        {
+            _healthSlider.value = value;
+        }
+
+        public void Initialize(float value)
+        {
+            _healthSlider.value = value;
+        }
     }
 }

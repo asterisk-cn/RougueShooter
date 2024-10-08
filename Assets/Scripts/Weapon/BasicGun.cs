@@ -19,7 +19,7 @@ namespace Weapons
         {
             foreach (var firePoint in _firePoint)
             {
-                var bullet = Instantiate(_bulletPrefab, firePoint.position, firePoint.rotation);
+                var bullet = Instantiate(_bulletPrefab, firePoint.position, firePoint.rotation, this.transform);
                 bullet.Initialize(_currentWeaponParams.bulletParams, _owner);
             }
         }
