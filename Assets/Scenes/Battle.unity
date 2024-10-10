@@ -1990,7 +1990,7 @@ GameObject:
   - component: {fileID: 1083746959}
   - component: {fileID: 1083746960}
   m_Layer: 0
-  m_Name: PlayerManager
+  m_Name: PlayerProvider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8698,6 +8698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ecae9cefac754ca3a9b2ecc3e49b14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _upgradablePlayerId: 0
 --- !u!4 &1635975637
 Transform:
   m_ObjectHideFlags: 0
@@ -8729,6 +8730,8 @@ MonoBehaviour:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
+  scopeName: 
+  <Parent>k__BackingField: {fileID: 0}
   _battle: {fileID: 1635975636}
   _playerProvider: {fileID: 1083746960}
   _upgradeSelector: {fileID: 1491609332}
