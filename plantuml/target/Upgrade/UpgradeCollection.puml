@@ -1,0 +1,7 @@
+@startuml
+class UpgradeCollection {
+    + UpgradeCollection()
+    + GetUpgrade(upgradeId:UpgradeId) : IUpgrade
+    + GetUpgradeCount() : int
+}
+@enduml

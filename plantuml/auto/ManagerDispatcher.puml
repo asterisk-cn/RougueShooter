@@ -1,5 +1,0 @@
-@startuml
-class ManagerDispatcher {
-}
-MonoBehaviour <|-- ManagerDispatcher
-@enduml

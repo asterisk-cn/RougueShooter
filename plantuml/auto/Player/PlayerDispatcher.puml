@@ -1,5 +1,7 @@
 @startuml
 class PlayerDispatcher {
+    + PlayerDispatcher(playerProvider:PlayerProvider, playerPresenter:PlayerPresenter)
+    + PostInitialize() : void
 }
-MonoBehaviour <|-- PlayerDispatcher
+IPostInitializable <|-- PlayerDispatcher
 @enduml

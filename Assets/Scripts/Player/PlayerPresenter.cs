@@ -1,20 +1,19 @@
-using UnityEngine;
 using R3;
 using Players;
 using Cysharp.Threading.Tasks;
 
-public class PlayerPresenter : MonoBehaviour
+public class PlayerPresenter
 {
-    public async void OnCreatePlayer(PlayerCore player, HealthView view)
+    public async void BindHealth(Health model, HealthView view)
     {
-        var health = player.GetComponentInChildren<Health>();
+        await model.InitializedAsync;
 
-        await health.InitializedAsync;
+        view.Initialize(model.CurrentHealth / model.MaxHealth);
 
-        view.Initialize((float)health.CurrentHealth.CurrentValue / health.MaxHealth);
+        model.OnCurrentHealthChangedAsObservable
+            .Subscribe(x => view.SetHealth(model.CurrentHealth / model.MaxHealth));
 
-        health.CurrentHealth
-            .Subscribe(x => view.SetHealth((float)x / health.MaxHealth))
-            .AddTo(this);
+        model.OnCurrentHealthChangedWithoutAnimationAsObservable
+            .Subscribe(_ => view.SetHealthWithoutAnimation(model.CurrentHealth / model.MaxHealth));
     }
 }

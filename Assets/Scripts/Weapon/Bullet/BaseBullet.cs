@@ -39,7 +39,6 @@ namespace Weapons.Bullets
                 {
                     _damageable.TakeDamage(_bulletParams.damage);
                 }
-
                 Destroy(gameObject);
             }
         }

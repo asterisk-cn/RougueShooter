@@ -1,5 +1,6 @@
 @startuml
 class UpgradeManager {
+    + Initialize(upgradeCollection:UpgradeCollection) : void
     + ApplyAllUpgrades() : void
     + AddUpgrade(upgradeId:UpgradeId) : void
 }

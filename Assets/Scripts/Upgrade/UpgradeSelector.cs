@@ -2,14 +2,16 @@ using UnityEngine;
 using R3;
 using System;
 using System.Collections.Generic;
+using VContainer;
+using Managers;
 
 namespace Upgrades
 {
     public class UpgradeSelector : MonoBehaviour
     {
-        [SerializeField] private UpgradeLoader _upgradeLoader;
+        [SerializeField] private UpgradeCollection _upgradeCollection;
         [SerializeField] private Battle _battle;
-        [SerializeField] private Players.PlayerManager _playerManager;
+        [SerializeField] private Players.PlayerProvider _playerProvider;
 
         public Observable<List<IUpgrade>> OnUpgradesUpdatedAsObservable => _onUpgradesUpdated;
         public ReadOnlyReactiveProperty<bool> IsActive => _isActive;
@@ -18,22 +20,25 @@ namespace Upgrades
         private List<IUpgrade> _upgrades { get; } = new List<IUpgrade>();
         private ReactiveProperty<bool> _isActive { get; } = new ReactiveProperty<bool>(false);
 
-        void Awake()
+        [Inject]
+        public void Construct(Battle battle, UpgradeCollection upgradeCollection, Players.PlayerProvider playerProvider)
         {
+            _battle = battle;
+            _upgradeCollection = upgradeCollection;
+            _playerProvider = playerProvider;
+
+            _battle.CurrentState
+                .Where(s => s == BattleState.Upgrade)
+                .Subscribe(_ => OnUpgrade())
+                .AddTo(this);
+
             _onUpgradesUpdated.AddTo(this);
             _isActive.AddTo(this);
         }
 
-        public void Initialize()
-        {
-            _battle.State
-                .Where(s => s == Battle.BattleState.Upgrade)
-                .Subscribe(_ => OnUpgrade())
-                .AddTo(this);
-        }
-
         void OnUpgrade()
         {
+            Debug.Log("Upgrade phase started.");
             SetUpgrades();
             _isActive.Value = true;
         }
@@ -48,22 +53,22 @@ namespace Upgrades
 
         List<IUpgrade> SelectUpgradeChoices(int num)
         {
-            var count = _upgradeLoader.GetUpgradeCount();
+            var count = _upgradeCollection.GetUpgradeCount();
             var ids = Utility.GetUniqueRandomNumbers(0, count - 1, num);
             var idList = new List<int>(ids);
-            return idList.ConvertAll(id => _upgradeLoader.GetUpgrade((UpgradeId)id));
+            return idList.ConvertAll(id => _upgradeCollection.GetUpgrade((UpgradeId)id));
         }
 
         public void ApplyUpgrade(int index)
         {
             Debug.Log($"Upgrade {index} applied to player {_battle.UpgradablePlayerId}.");
-            var player = _playerManager.Players[_battle.UpgradablePlayerId];
+            var player = _playerProvider.Players[_battle.UpgradablePlayerId];
             var upgradeManager = player.GetComponent<UpgradeManager>();
             upgradeManager.AddUpgrade((UpgradeId)index);
             upgradeManager.ApplyAllUpgrades();
 
             _isActive.Value = false;
-            _battle.SetState(Battle.BattleState.Battle);
+            _battle.SetState(BattleState.Battle);
         }
     }
 }

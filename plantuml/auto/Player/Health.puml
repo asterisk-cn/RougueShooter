@@ -1,12 +1,14 @@
 @startuml
 class Health {
     + MaxHealth : float <<get>>
+    + CurrentHealth : float <<get>>
     + Initialize(maxHealth:float) : void
     + ResetHealth(maxHealth:float) : void
 }
-class "ReadOnlyReactiveProperty`1"<T> {
+class "Observable`1"<T> {
 }
 MonoBehaviour <|-- Health
-Health --> "CurrentHealth<float>" "ReadOnlyReactiveProperty`1"
+Health --> "OnCurrentHealthChangedAsObservable<Unit>" "Observable`1"
+Health --> "OnCurrentHealthChangedWithoutAnimationAsObservable<Unit>" "Observable`1"
 Health --> "InitializedAsync" UniTask
 @enduml

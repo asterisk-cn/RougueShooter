@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using R3;
 using System;
+using VContainer;
 using TMPro;
 
 namespace Upgrades
@@ -22,7 +23,8 @@ namespace Upgrades
             get { return _selectedUpgradeIndex; }
         }
 
-        public void Awake()
+        [Inject]
+        public void Construct()
         {
             foreach (var button in _upgradeSelectButtons)
             {
@@ -30,10 +32,7 @@ namespace Upgrades
             }
 
             _onUpgradeSelected.AddTo(this);
-        }
 
-        public void Initialize()
-        {
             ResetSelection();
         }
 

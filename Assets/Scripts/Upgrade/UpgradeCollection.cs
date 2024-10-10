@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Upgrades
 {
-    public class UpgradeLoader : MonoBehaviour
+    public class UpgradeCollection
     {
-        [SerializeField] private List<IUpgrade> _upgradeList;
+        private List<IUpgrade> _upgradeList;
 
-        void Awake()
+        public UpgradeCollection()
         {
             LoadUpgradeSetting();
         }

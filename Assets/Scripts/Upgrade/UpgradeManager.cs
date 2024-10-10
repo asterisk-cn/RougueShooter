@@ -1,14 +1,16 @@
 using UnityEngine;
 using System.Collections.Generic;
+using R3;
 
 namespace Upgrades
 {
     public class UpgradeManager : MonoBehaviour
     {
-        [SerializeField] private UpgradeLoader _upgradeLoader;
         [SerializeField] private Players.PlayerStatusManager _playerStatusManager;
         [SerializeField] private Weapons.WeaponManager _weaponManager;
-        [SerializeField] private List<UpgradeId> _upgradeIdList;
+        [SerializeField] private List<UpgradeId> _upgradeIdList = new List<UpgradeId>();
+
+        private UpgradeCollection _upgradeCollection;
 
         private Players.PlayerParams _playerParamsVariation;
         private List<GameObject> _weaponList;
@@ -20,10 +22,13 @@ namespace Upgrades
             get { return _playerParamsVariation; }
         }
 
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        public void Initialize(UpgradeCollection upgradeCollection)
         {
-            ApplyAllUpgrades();
+            _upgradeCollection = upgradeCollection;
+
+            _playerStatusManager.OnInitializedAsync
+                .Subscribe(_ => ApplyAllUpgrades())
+                .AddTo(this);
         }
 
         public void ApplyAllUpgrades()
@@ -35,7 +40,7 @@ namespace Upgrades
         void ApplyPlayerUpgrades()
         {
             _playerParamsVariation = new Players.PlayerParams();
-            var playerUpgrades = _upgradeIdList.FindAll(upgradeId => _upgradeLoader.GetUpgrade(upgradeId) is PlayerUpgrade).ConvertAll(upgradeId => _upgradeLoader.GetUpgrade(upgradeId) as PlayerUpgrade);
+            var playerUpgrades = _upgradeIdList.FindAll(upgradeId => _upgradeCollection.GetUpgrade(upgradeId) is PlayerUpgrade).ConvertAll(upgradeId => _upgradeCollection.GetUpgrade(upgradeId) as PlayerUpgrade);
             foreach (var playerUpgrade in playerUpgrades)
             {
                 _playerParamsVariation += playerParamsVariation;
@@ -46,11 +51,11 @@ namespace Upgrades
         void ApplyWeaponUpgrades()
         {
             _weaponList = new List<GameObject>();
-            var addWeaponUpgrades = _upgradeIdList.FindAll(upgradeId => _upgradeLoader.GetUpgrade(upgradeId) is AddWeaponUpgrade).ConvertAll(upgradeId => _upgradeLoader.GetUpgrade(upgradeId) as AddWeaponUpgrade);
+            var addWeaponUpgrades = _upgradeIdList.FindAll(upgradeId => _upgradeCollection.GetUpgrade(upgradeId) is AddWeaponUpgrade).ConvertAll(upgradeId => _upgradeCollection.GetUpgrade(upgradeId) as AddWeaponUpgrade);
             foreach (var addWeaponUpgrade in addWeaponUpgrades)
             {
                 var _weaponParamsVariation = new Weapons.WeaponParams();
-                var weaponUpgrades = _upgradeIdList.FindAll(upgradeId => _upgradeLoader.GetUpgrade(upgradeId) is WeaponUpgrade && (_upgradeLoader.GetUpgrade(upgradeId) as WeaponUpgrade).weaponId == addWeaponUpgrade.weaponId).ConvertAll(upgradeId => _upgradeLoader.GetUpgrade(upgradeId) as WeaponUpgrade);
+                var weaponUpgrades = _upgradeIdList.FindAll(upgradeId => _upgradeCollection.GetUpgrade(upgradeId) is WeaponUpgrade && (_upgradeCollection.GetUpgrade(upgradeId) as WeaponUpgrade).weaponId == addWeaponUpgrade.weaponId).ConvertAll(upgradeId => _upgradeCollection.GetUpgrade(upgradeId) as WeaponUpgrade);
                 foreach (var weaponUpgrade in weaponUpgrades)
                 {
                     _weaponParamsVariation += weaponUpgrade.weaponParamsVariation;

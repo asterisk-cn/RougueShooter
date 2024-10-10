@@ -1,7 +1,7 @@
 @startuml
-class UpgradeLoader {
+class UpgradeCollection {
+    + UpgradeCollection()
     + GetUpgrade(upgradeId:UpgradeId) : IUpgrade
     + GetUpgradeCount() : int
 }
-MonoBehaviour <|-- UpgradeLoader
 @enduml

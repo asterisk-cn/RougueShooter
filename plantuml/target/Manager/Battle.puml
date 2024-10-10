@@ -1,0 +1,18 @@
+@startuml
+namespace Managers{
+enum BattleState {
+    Start,
+    Battle,
+    Upgrade,
+    End,
+}
+class Battle {
+    + UpgradablePlayerId : int <<get>>
+    + SetState(state:BattleState) : void
+    + SetUpgradablePlayer(playerId:int) : void
+    + OnPlayerDead(playerId:int) : void
+    + Construct() : void
+}
+}
+Players.IBattleStateProvider <|-- Battle
+@enduml

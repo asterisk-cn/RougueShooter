@@ -1,16 +1,14 @@
 @startuml
 !include ./Utility.puml
-!include ./ManagerDispatcher.puml
 !include ./IDamageable.puml
-!include ./Battle.puml
 !include ./FollowObject.puml
 !include ./Upgrade/WeaponUpgrade.puml
 !include ./Upgrade/IUpgrade.puml
+!include ./Upgrade/UpgradeCollection.puml
 !include ./Upgrade/UpgradeSelectorPresenter.puml
 !include ./Upgrade/UpgradeManager.puml
 !include ./Upgrade/UpgradeSelectorView.puml
 !include ./Upgrade/PlayerUpgrade.puml
-!include ./Upgrade/UpgradeLoader.puml
 !include ./Upgrade/UpgradeSelector.puml
 !include ./Upgrade/AddWeaponUpgrade.puml
 !include ./Upgrade/UpgradeSetting.puml
@@ -20,8 +18,10 @@
 !include ./Weapon/WeaponManager.puml
 !include ./Weapon/BasicGun.puml
 !include ./Weapon/WeaponId.puml
+!include ./Manager/GameLifeTimeScope.puml
+!include ./Manager/Battle.puml
 !include ./Player/Health.puml
-!include ./Player/PlayerManager.puml
+!include ./Player/IBattleStateProvider.puml
 !include ./Player/PlayerMove.puml
 !include ./Player/PlayerDispatcher.puml
 !include ./Player/PlayerPresenter.puml
@@ -29,6 +29,7 @@
 !include ./Player/PlayerSetting.puml
 !include ./Player/HealthView.puml
 !include ./Player/PlayerParams.puml
+!include ./Player/PlayerProvider.puml
 !include ./Player/PlayerInput.puml
 !include ./Player/PlayerCore.puml
 !include ./Weapon/Bullet/BaseBullet.puml

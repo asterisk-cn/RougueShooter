@@ -1,6 +1,6 @@
 @startuml
 class UpgradeSelector {
-    + Initialize() : void
+    + Construct(battle:Battle, upgradeCollection:UpgradeCollection, playerProvider:Players.PlayerProvider) : void
     + SetUpgrades() : void
     + ApplyUpgrade(index:int) : void
 }

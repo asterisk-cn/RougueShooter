@@ -1,8 +1,7 @@
 @startuml
 class UpgradeSelectorView {
     + selectedUpgradeIndex : int <<get>>
-    + Awake() : void
-    + Initialize() : void
+    + Construct() : void
     + SetActive(active:bool) : void
     + OnClickUpgradeButton(index:int) : void
     + SetUpgrades(upgrades:List<IUpgrade>) : void

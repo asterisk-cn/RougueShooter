@@ -1,6 +1,7 @@
 @startuml
 class HealthView {
     + SetHealth(value:float) : void
+    + SetHealthWithoutAnimation(value:float) : void
     + Initialize(value:float) : void
 }
 @enduml
