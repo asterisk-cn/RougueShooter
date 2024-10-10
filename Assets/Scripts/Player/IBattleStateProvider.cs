@@ -1,6 +1,7 @@
 using R3;
+using Managers;
 
-namespace Managers
+namespace Players
 {
     public interface IBattleStateProvider
     {

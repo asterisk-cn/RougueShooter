@@ -5,6 +5,7 @@ using ObservableCollections;
 using VContainer;
 using VContainer.Unity;
 using Upgrades;
+using Managers;
 
 namespace Players
 {
@@ -29,7 +30,7 @@ namespace Players
             PostInitialize();
         }
 
-        public void PostInitialize()
+        private void PostInitialize()
         {
             SetupDefaultPlayers();
 

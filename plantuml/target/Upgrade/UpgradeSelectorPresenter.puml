@@ -2,6 +2,7 @@
 namespace Upgrades{
 class UpgradeSelectorPresenter {
     + Initialize(model:UpgradeSelector, view:UpgradeSelectorView) : void
+    + PostInitialize() : void
 }
 }
 Upgrades.UpgradeSelector <.. UpgradeSelectorPresenter

@@ -2,5 +2,8 @@
 class PlayerStatusManager {
     + ApplyPlayerParamsVariation(playerParamsVariation:PlayerParams) : void
 }
+class "Observable`1"<T> {
+}
 MonoBehaviour <|-- PlayerStatusManager
+PlayerStatusManager --> "OnInitializedAsync<Unit>" "Observable`1"
 @enduml

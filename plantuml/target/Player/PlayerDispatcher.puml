@@ -1,7 +1,9 @@
 @startuml
 class PlayerDispatcher {
+    + PlayerDispatcher(playerProvider:PlayerProvider, playerPresenter:PlayerPresenter)
+    + PostInitialize() : void
 }
-Players.PlayerManager --> PlayerDispatcher
+Players.PlayerProvider --> PlayerDispatcher
 PlayerPresenter --> PlayerDispatcher
 Players.PlayerCore <.. PlayerDispatcher
 @enduml

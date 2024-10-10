@@ -1,0 +1,21 @@
+@startuml
+enum BattleState {
+    Start,
+    Battle,
+    Upgrade,
+    End,
+}
+class Battle {
+    + UpgradablePlayerId : int <<get>>
+    + Construct() : void
+    + PostInitialize() : void
+    + SetState(state:BattleState) : void
+    + SetUpgradablePlayer(playerId:int) : void
+    + OnPlayerDead(playerId:int) : void
+}
+class "ReadOnlyReactiveProperty`1"<T> {
+}
+MonoBehaviour <|-- Battle
+IBattleStateProvider <|-- Battle
+Battle --> "CurrentState<BattleState>" "ReadOnlyReactiveProperty`1"
+@enduml

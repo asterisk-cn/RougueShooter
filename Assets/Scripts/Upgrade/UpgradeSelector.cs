@@ -3,6 +3,7 @@ using R3;
 using System;
 using System.Collections.Generic;
 using VContainer;
+using Managers;
 
 namespace Upgrades
 {

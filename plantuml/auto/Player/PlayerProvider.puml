@@ -1,0 +1,14 @@
+@startuml
+class PlayerProvider {
+    + Construct(battle:Battle, upgradeCollection:UpgradeCollection) : void
+    + PostInitialize() : void
+    + ResetPlayers() : void
+}
+class "ObservableList`1"<T> {
+}
+class "Observable`1"<T> {
+}
+MonoBehaviour <|-- PlayerProvider
+PlayerProvider --> "Players<PlayerCore>" "ObservableList`1"
+PlayerProvider --> "OnPlayerDeadAsObservable<int>" "Observable`1"
+@enduml

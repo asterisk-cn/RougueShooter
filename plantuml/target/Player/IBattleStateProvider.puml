@@ -1,0 +1,5 @@
+@startuml
+interface IBattleStateProvider {
+    + CurrentState : ReadOnlyReactiveProperty<BattleState>
+}
+@enduml
