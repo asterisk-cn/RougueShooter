@@ -1,10 +1,12 @@
 using UnityEngine;
 using R3;
 using Cysharp.Threading.Tasks;
+using VContainer.Unity;
+
 
 namespace Players
 {
-    public class Health : MonoBehaviour
+    public class Health
     {
         private IDamageable _damageable;
 
@@ -20,32 +22,45 @@ namespace Players
         private Subject<Unit> _onCurrentHealthChangedWithoutAnimation = new Subject<Unit>();
         private readonly UniTaskCompletionSource _initializationCompletionSource = new UniTaskCompletionSource();
 
-        void Awake()
-        {
-            _damageable = GetComponentInParent<IDamageable>();
 
-            _onCurrentHealthChanged.AddTo(this);
-            _onCurrentHealthChangedWithoutAnimation.AddTo(this);
+        public Health(IDamageable damageable)
+        {
+            if (damageable == null)
+            {
+                throw new System.ArgumentNullException(nameof(damageable));
+            }
+
+            if (damageable.MaxHealth <= 0)
+            {
+                throw new System.ArgumentException("MaxHealth must be greater than 0", nameof(damageable.MaxHealth));
+            }
+
+            _damageable = damageable;
+
+            PostInitialize();
         }
 
-        public void Initialize(float maxHealth)
+        private void PostInitialize()
         {
+            ResetHealth(_damageable.MaxHealth);
+
             _damageable.OnDamagedAsObservable
                 .Where(x => x > 0)
-                .Subscribe(x => TakeDamage(x))
-                .AddTo(this);
+                .Subscribe(x => TakeDamage(x));
 
             _damageable.OnResetAsObservable
-                .Subscribe(_ => ResetHealth(maxHealth))
-                .AddTo(this);
-
-            ResetHealth(maxHealth);
+                .Subscribe(_ => ResetHealth(_maxHealth));
 
             _initializationCompletionSource.TrySetResult();
         }
 
         public void ResetHealth(float maxHealth)
         {
+            if (maxHealth <= 0)
+            {
+                throw new System.ArgumentException("MaxHealth must be greater than 0", nameof(maxHealth));
+            }
+
             _maxHealth = maxHealth;
             _currentHealth = maxHealth;
 
@@ -59,6 +74,12 @@ namespace Players
 
         void TakeDamage(float damage)
         {
+            Debug.Log(damage);
+            if (damage <= 0)
+            {
+                throw new System.ArgumentException("Damage must be greater than 0", nameof(damage));
+            }
+
             if (_currentHealth <= 0)
             {
                 return;

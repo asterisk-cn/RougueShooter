@@ -16,6 +16,7 @@ namespace Players
         private Subject<Unit> _onReset = new Subject<Unit>();
 
         public PlayerParams PlayerParams => _playerParams;
+        public float MaxHealth => _playerParams.maxHealth;
 
         public int PlayerId { get; private set; }
         private PlayerParams _playerParams = new PlayerParams();
@@ -30,7 +31,7 @@ namespace Players
         void Start()
         {
             // TODO: 依存逆にする?
-            GetComponentInChildren<Health>().Initialize(_playerParams.maxHealth);
+            // GetComponentInChildren<Health>().Initialize(_playerParams.maxHealth);
             GetComponentInChildren<PlayerMove>().Initialize(_playerParams.speed);
         }
 
