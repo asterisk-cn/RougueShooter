@@ -8666,7 +8666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe7da11e32e414da085b82c7559bf676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _battle: {fileID: 1635975636}
+  _battle: {fileID: 0}
   _playerProvider: {fileID: 0}
 --- !u!1 &1635975635
 GameObject:
@@ -8677,8 +8677,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1635975637}
-  - component: {fileID: 1635975636}
   - component: {fileID: 1635975638}
+  - component: {fileID: 1635975639}
   m_Layer: 0
   m_Name: Battle
   m_TagString: Untagged
@@ -8686,19 +8686,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1635975636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1635975635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ecae9cefac754ca3a9b2ecc3e49b14c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _upgradablePlayerId: 0
 --- !u!4 &1635975637
 Transform:
   m_ObjectHideFlags: 0
@@ -8723,16 +8710,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1635975635}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ca66bdd7e8cb4894aece16e81466bf5, type: 3}
+  m_Script: {fileID: 11500000, guid: 34ff7fa6fecfe4b2eaab327a7ca22f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1635975639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635975635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69d6d817adc7448cd8060df9ab6a64d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentReference:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
-  scopeName: 
-  <Parent>k__BackingField: {fileID: 0}
-  _battle: {fileID: 1635975636}
+  _battle: {fileID: 1635975638}
   _playerProvider: {fileID: 1083746960}
   _upgradeSelector: {fileID: 1491609332}
   _upgradeSelectorView: {fileID: 1491609331}
@@ -9202,7 +9199,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4652702892177192653, guid: 8c3dcb0e0ae0b45bcbbbfb78a7ec72cf, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9370,7 +9368,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4652702892177192653, guid: 8c3dcb0e0ae0b45bcbbbfb78a7ec72cf, type: 3}
     m_RemovedGameObjects:
     - {fileID: 2322868424075896180, guid: 8c3dcb0e0ae0b45bcbbbfb78a7ec72cf, type: 3}
     m_AddedGameObjects: []

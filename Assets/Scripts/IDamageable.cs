@@ -6,6 +6,7 @@ public interface IDamageable
 {
     public Observable<float> OnDamagedAsObservable { get; }
     public Observable<Unit> OnResetAsObservable { get; }
+    public float MaxHealth { get; }
 
     public void TakeDamage(float damage);
     public void OnDead();
